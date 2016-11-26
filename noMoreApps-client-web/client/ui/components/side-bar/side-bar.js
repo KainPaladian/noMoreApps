@@ -6,6 +6,7 @@
     		if(err){
     			console.log(err);
     		}
+            alert('See the log...')
 			console.log(response);
 			closeNav();
 		});
