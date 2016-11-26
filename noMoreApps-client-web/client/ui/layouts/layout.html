@@ -1,0 +1,14 @@
+<template name="layout">
+	<head>
+	  <title>NoMoreApps</title>
+	</head>
+	<body>
+		{{> navBar}}
+		{{> sideBar}}			
+		<div id="main" class="container">
+			{{> Template.dynamic template=main}}
+		</div>
+	</body>
+	<footer>		
+	</footer>
+</template>
