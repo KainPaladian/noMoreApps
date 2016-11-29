@@ -5,6 +5,10 @@ renderText = function(noMoreResponse,apiResponse){
 	var commandsConfig = apiResponse.commandsConfig;
 	var commands = null;
 
+	if(apiResponse.title){
+		$(selectorRender).append("<h2>"+apiResponse.title+"</h2>");	
+	}
+
 	if(commandsConfig){ 
 		if(commandsConfig.tag=="$repeat") {
 			console.log("repeat");
