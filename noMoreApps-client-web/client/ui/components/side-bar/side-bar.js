@@ -5,7 +5,7 @@
     		if(err){
     			console.log(err);
     		}
-            render(response.data,response.data.messageBody.apiResponse);
+            renderResponse(response.data,response.data.messageBody.apiResponse);
 			closeNav();
 		});
     }
