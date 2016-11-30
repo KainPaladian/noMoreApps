@@ -11,10 +11,8 @@ renderText = function(noMoreResponse,apiResponse){
 
 	if(commandsConfig){ 
 		if(commandsConfig.tag=="$repeat") {
-			console.log("repeat");
 			commands = noMoreResponse.messageBody.apiResponse.commandsConfig.commands;
 		}else {
-			console.log("no repeat");
 			if(apiResponse.commandsConfig){
 				commands = apiResponse.commandsConfig.commands;
 			}

@@ -32,5 +32,10 @@ Meteor.methods({
 			'http://appexample.getsandbox.com/api/1/nomoreapps',
 			options);
 		return response;
+	},
+	performCommand : function(url,method,data){
+		var options = {};
+		options.data = data;
+		return HTTP.call(method,url,options);	
 	}
 });

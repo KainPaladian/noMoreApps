@@ -1,10 +1,6 @@
 var selectorRender = "#render";
 
 renderResponse = function(noMoreResponse,apiResponse) {
-	
-	console.log(noMoreResponse);
-	console.log(apiResponse);
-
 	if(apiResponse){
 		$(selectorRender).empty();
 		if(apiResponse.type=='TEXT') {
@@ -15,8 +11,6 @@ renderResponse = function(noMoreResponse,apiResponse) {
 
 renderRequest = function(noMoreResponse,apiConfigRequest) {
 	
-	console.log(noMoreResponse);
-	console.log(apiConfigRequest);
 	var apiRequest = apiConfigRequest.apiRequest;
 
 	if(apiConfigRequest && apiRequest){
