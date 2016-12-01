@@ -36,6 +36,7 @@ renderForm = function(noMoreResponse,apiConfigRequest) {
 }
 
 performFormCommand = function(button,apiConfigRequest){
+	console.log(apiConfigRequest);
 	var data = 
 	{
 		messageType: "API_REQUEST",
@@ -77,7 +78,7 @@ performFormCommand = function(button,apiConfigRequest){
 	data.messageBody.apiRequest.body.inputs = updatedInputsJSON;
 
 	Meteor.call('performCommand',
-		'http://appexample.getsandbox.com/api/1/nomoreapps/command/register',
+		apiConfigRequest.uri,
 		apiConfigRequest.method,
 		data,
 		function(err, response) {
@@ -85,5 +86,5 @@ performFormCommand = function(button,apiConfigRequest){
 				console.log(err);
 			}
 			renderResponse(response.data,response.data.messageBody.apiResponse);
-	});
+		});
 }

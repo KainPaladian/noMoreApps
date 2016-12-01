@@ -5,6 +5,8 @@ renderResponse = function(noMoreResponse,apiResponse) {
 		$(selectorRender).empty();
 		if(apiResponse.type=='TEXT') {
 			renderText(noMoreResponse,apiResponse);
+		}else if(apiResponse.type=='CAROUSEL'){
+			renderCarousel(noMoreResponse,apiResponse);
 		}
 	}	
 }
