@@ -77,6 +77,7 @@ performFormCommand = function(button,apiConfigRequest){
 
 	data.messageBody.apiRequest.body.inputs = updatedInputsJSON;
 
+console.log(apiConfigRequest);
 	Meteor.call('performCommand',
 		apiConfigRequest.uri,
 		apiConfigRequest.method,
