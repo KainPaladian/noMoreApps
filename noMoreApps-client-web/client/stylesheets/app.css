@@ -1,43 +1,69 @@
 /* ======== The side navigation menu =========*/
-.sidenav {
-    height: 100%; /* 100% Full-height */
-    width: 0; /* 0 width - change this with JavaScript */
-    position: fixed;  /*Stay in place */
-    z-index: 1; /* Stay on top */
+.overlay-content {
+    /*position: relative;*/
+    /*top: 25%;*/
+    /*text-align: left;*/
+    /*margin-top: 30px;*/
+    /*width: 100%;    */
+    /*padding:15px;*/
+}
+
+.overlay-content h4 {
+    font-weight: bold;
+    /*font-size: 24px;*/
+}
+
+.overlay-content a {
+    border-bottom: 1px solid rgba(255,255,255,.15)!important;
+    padding: 20px;
+}
+
+.overlay-content img {
+    max-width: 100px;
+    min-height: 100px;
+}
+
+.overlay {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
     top: 0;
     left: 0;
-    background-color: #111; /* Black*/
-    overflow-x: hidden; /* Disable horizontal scroll */
-    padding-top: 60px;  /*Place content 60px from the top */
-    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0, 0.9);
+    overflow-x: hidden;
+    transition: 0.5s;
 }
 
-/* The navigation menu links */
-.sidenav a {
-    padding: 8px 8px 8px 32px;
+.overlay a {
+    /*padding: 8px;*/
     text-decoration: none;
-    font-size: 25px;
     color: #818181;
     display: block;
-    transition: 0.3s
+    transition: 0.3s;
 }
 
-.sidenav .list-group{
-    padding-top: 50px;
-}
-
-/* When you mouse over the navigation links, change their color */
-.sidenav a:hover, .offcanvas a:focus{
+.overlay a:hover, .overlay a:focus {
     color: #f1f1f1;
 }
 
-/* Position and style the close button (top right corner) */
-.sidenav .closebtn {
-    font-size: 36px;
+.overlay .closebtn {
     position: absolute;
-    top: 0;
-    right: 25px;
-    margin-left: 50px;
+    top: 20px;
+    right: 45px;
+    font-size: 60px;
+}
+
+@media screen and (max-height: 450px) {
+  .overlay a {
+    /*font-size: 20px*/
+  }
+  .overlay .closebtn {
+/*    font-size: 40px;*/
+    top: 15px;
+    right: 35px;
+  }
 }
 
 /* ======== The side navigation menu =========*/
@@ -54,15 +80,3 @@
     font-size: 50px;
 }
 /* ======== The side navigation menu =========*/
-
-/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
-#main {
-    transition: margin-left .5s;
-    padding: 20px;
-}
-
-/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
-@media screen and (max-height: 450px) {
-    .sidenav {padding-top: 15px;}
-    .sidenav a {font-size: 18px;}
-}

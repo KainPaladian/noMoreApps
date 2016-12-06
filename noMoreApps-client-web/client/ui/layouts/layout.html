@@ -8,6 +8,16 @@
 		<div id="main" class="container">
 			{{> Template.dynamic template=main}}
 		</div>
+		<script type="text/javascript">
+			$(document).ajaxSend(function () {
+				console.log("Passei")
+			   	openNav();
+			});
+
+			$(document).ajaxComplete(function () {
+			   	closeNav();
+			});
+		</script>
 	</body>
 	<footer>		
 	</footer>
