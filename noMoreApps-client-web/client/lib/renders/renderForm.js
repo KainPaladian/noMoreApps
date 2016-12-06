@@ -77,7 +77,8 @@ performFormCommand = function(button,apiConfigRequest){
 
 	data.messageBody.apiRequest.body.inputs = updatedInputsJSON;
 
-console.log(apiConfigRequest);
+	console.log(apiConfigRequest);
+	openLoading();
 	Meteor.call('performCommand',
 		apiConfigRequest.uri,
 		apiConfigRequest.method,
@@ -87,5 +88,6 @@ console.log(apiConfigRequest);
 				console.log(err);
 			}
 			renderResponse(response.data,response.data.messageBody.apiResponse);
+			closeLoading();
 		});
 }
