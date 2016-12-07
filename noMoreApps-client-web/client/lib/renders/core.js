@@ -12,9 +12,7 @@ renderResponse = function(noMoreResponse,apiResponse) {
 }
 
 renderRequest = function(noMoreResponse,apiConfigRequest) {
-	
 	var apiRequest = apiConfigRequest.apiRequest;
-
 	if(apiConfigRequest && apiRequest){
 		$(selectorRender).empty();
 		if(apiRequest.type=='FORM') {

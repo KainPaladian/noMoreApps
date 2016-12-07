@@ -36,7 +36,7 @@ renderForm = function(noMoreResponse,apiConfigRequest) {
 }
 
 performFormCommand = function(button,apiConfigRequest){
-	console.log(apiConfigRequest);
+	openLoading();
 	var data = 
 	{
 		messageType: "API_REQUEST",
@@ -76,9 +76,6 @@ performFormCommand = function(button,apiConfigRequest){
 	});
 
 	data.messageBody.apiRequest.body.inputs = updatedInputsJSON;
-
-	console.log(apiConfigRequest);
-	openLoading();
 	Meteor.call('performCommand',
 		apiConfigRequest.uri,
 		apiConfigRequest.method,
@@ -89,5 +86,6 @@ performFormCommand = function(button,apiConfigRequest){
 			}
 			renderResponse(response.data,response.data.messageBody.apiResponse);
 			closeLoading();
-		});
+		}
+	);
 }

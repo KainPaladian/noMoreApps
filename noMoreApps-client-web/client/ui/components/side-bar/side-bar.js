@@ -1,4 +1,4 @@
-Template.sideBar.created = function(){
+Template.sideBar.rendered = function(){
     openLoading();
     Meteor.call('getApps',function(error, response) {
         if(error){
@@ -10,9 +10,8 @@ Template.sideBar.created = function(){
 }
 
 Template.sideBar.helpers({
-    apps: function(){      
+    apps: function(){
         var apps = Session.get("apps");
-        console.log(apps);
         return apps;
     }
 });

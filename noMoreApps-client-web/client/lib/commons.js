@@ -9,9 +9,9 @@ closeNav = function () {
 }
 
 openLoading = function () {
-    $("#loading").css('width','100%');
+    $("#loading").css('display','block');
 }
 
 closeLoading = function () {
-    $("#loading").css('width','0%');
+    $("#loading").css('display','none');
 }

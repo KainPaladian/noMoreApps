@@ -20,7 +20,6 @@ renderCarousel = function(noMoreResponse,apiResponse) {
     $(itemsJSON).each(function(index,itemJSON){
         var itemJSON = itemJSON.apiResponse;
         var body = itemJSON.body;
-        console.log(itemJSON);
         if(itemJSON.type=="IMAGE"){
           $(selectorCarousel).append("<div><img src=\""+body.url+"\" class=\"img-responsive\"></img></div>");
         }
