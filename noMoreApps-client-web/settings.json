@@ -1,4 +1,6 @@
 {
-	"uriBase":"http://nomoreapps.getsandbox.com/api/1",
-	"apiApps":"/apps"
+	"noMoreAppsApi":{
+		"pathBase":"http://nomoreapps.getsandbox.com/api/1",
+		"getApps":"/apps"
+	}
 }

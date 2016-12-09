@@ -2,6 +2,7 @@ Template.sideBar.rendered = function(){
     openLoading();
     Meteor.call('getApps',function(error, response) {
         if(error){
+        	closeLoading();
            throw new Meteor.Error(error);
         }
         Session.set("apps",response.data.apps);
@@ -17,14 +18,16 @@ Template.sideBar.helpers({
 });
 
 Template.sideBar.events({
-    "click #appExample": function() {
+    "click .appInfo": function(event) {
         event.preventDefault();
         openLoading();
-        Meteor.call('connect',function(error, response) {
+        var appInfo = JSON.parse(event.currentTarget.getAttribute('data-app'));
+        Meteor.call('connect',appInfo,null,null,function(error, response) {
         	if(error){
+        		closeLoading();
         		throw new Meteor.Error(error);
         	}
-            renderResponse(response.data,response.data.messageBody.apiResponse);
+            processApiResponse(response.data);
         	closeNav();
             closeLoading();
         });

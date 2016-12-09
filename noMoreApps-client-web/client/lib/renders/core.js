@@ -1,14 +1,27 @@
-var selectorRender = "#render";
+processApiResponse = function(apiResponse) {
+	getRenderContainer().empty();
+	if(apiResponse.type==CONNECT_RESPONSE){
+		processConnectResponse(apiResponse);
+	}
+}
 
-renderResponse = function(noMoreResponse,apiResponse) {
-	if(apiResponse){
-		$(selectorRender).empty();
-		if(apiResponse.type=='TEXT') {
-			renderText(noMoreResponse,apiResponse);
-		}else if(apiResponse.type=='CAROUSEL'){
-			renderCarousel(noMoreResponse,apiResponse);
-		}
-	}	
+processConnectResponse = function(apiResponse) {
+	processAppearance(getRenderContainer(),apiResponse);
+	processLayout(getRenderContainer(),apiResponse);
+}
+
+processComponent = function(container,componentInfo){
+	if(componentInfo.type==COMPONENT_TYPE_CONTAINER){
+		processContainer(container,componentInfo);
+	}
+}
+
+processComponents = function(container,componentsInfo){
+	if(componentsInfo){
+		$(componentsInfo).each(function(index,componentInfo){
+			processComponent(container,componentInfo);
+		});
+	}
 }
 
 renderRequest = function(noMoreResponse,apiConfigRequest) {
