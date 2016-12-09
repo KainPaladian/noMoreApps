@@ -1,5 +1,3 @@
-var selectorRender = "#render";
-
 renderCommands = function(noMoreResponse,commands) {
 	if(commands){
 		$(selectorRender).append("<div class=\"btn-group btn-group-justified\" role=\"group\" aria-label=\"...\">");
@@ -18,4 +16,18 @@ renderCommands = function(noMoreResponse,commands) {
 		});
 		$(selectorRender).append("</div>");
 	}
+}
+
+processCommand = function(container,componentInfo){
+	var options = componentInfo.options;
+	var mainElement = $("<button></button>").addClass("component-command btn btn-default");
+	$(mainElement).uniqueId();
+	if(options){
+		var value = options.value;
+		if(value){
+			$(mainElement).value(value);
+		}
+	}
+	$(container).append(mainElement);
+	processComponents(mainElement,componentInfo.components);
 }

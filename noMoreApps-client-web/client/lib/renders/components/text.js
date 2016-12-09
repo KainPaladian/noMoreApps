@@ -1,24 +1,11 @@
-var selectorRender = "#render";
-
-renderText = function(noMoreResponse,apiResponse){
-	var body = apiResponse.body;
-	var commandsConfig = apiResponse.commandsConfig;
-	var commands = null;
-
-	if(apiResponse.title){
-		$(selectorRender).append("<h2>"+apiResponse.title+"</h2>");	
+processText = function(container,componentInfo){
+	var options = componentInfo.options;
+	var mainElement = $("<p></p>").addClass("component-text");
+	$(mainElement).uniqueId();
+	if(options){
+		var value = options.value;
+		$(mainElement).text(value).addClass("lead");
 	}
-
-	if(commandsConfig){ 
-		if(commandsConfig.tag=="$repeat") {
-			commands = noMoreResponse.messageBody.apiResponse.commandsConfig.commands;
-		}else {
-			if(apiResponse.commandsConfig){
-				commands = apiResponse.commandsConfig.commands;
-			}
-		}
-	}
-	$(selectorRender).append("<p>"+body.message+"</p>");
-
-	renderCommands(noMoreResponse,commands);
+	$(container).append(mainElement);
+	processComponents(mainElement,componentInfo.components);
 }
