@@ -6,7 +6,7 @@ getDefaultOptions = function(){
 	return options;
 }
 
-buildTerminalDefaultRequest = function(messageType,userInfo,deviceInfo){
+buildTerminalDefaultRequest = function(messageType,payload,userInfo,deviceInfo){
 	var request =  {			
 			type: messageType,
 			body: {}
@@ -15,7 +15,10 @@ buildTerminalDefaultRequest = function(messageType,userInfo,deviceInfo){
 		request.body.user = userInfo;
 	}
 	if(deviceInfo){
-		equest.body.device = deviceInfo;
+		request.body.device = deviceInfo;
+	}
+	if(payload){
+		request.body.payload = payload;
 	}
 	return request;
 }
@@ -23,16 +26,16 @@ buildTerminalDefaultRequest = function(messageType,userInfo,deviceInfo){
 Meteor.methods({
 	connect : function(appInfo,userInfo,deviceInfo) {
 		var options = getDefaultOptions();
-		options.data = buildTerminalDefaultRequest(CONNECT_REQUEST,userInfo,deviceInfo);
+		options.data = buildTerminalDefaultRequest(CONNECT_REQUEST,null,userInfo,deviceInfo);
 		var response = HTTP.call(
 			'POST', 
 			appInfo.urlConnect,
 			options);
 		return response;
 	},
-	performCommand : function(url,method,data){
-		var options = {};
-		options.data = data;
+	sendTerminalRequest : function(url,method,payload,userInfo,deviceInfo){
+		var options = getDefaultOptions();
+		options.data = buildTerminalDefaultRequest(TERMINAL_REQUEST,payload,userInfo,deviceInfo);
 		return HTTP.call(method,url,options);	
 	}
 });

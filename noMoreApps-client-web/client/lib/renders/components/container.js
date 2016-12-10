@@ -1,7 +1,10 @@
 processContainer = function(container,componentInfo){
 	var options = componentInfo.options;
 	var mainElement = $("<div></div>").addClass("component-container"); 
+	$(container).append(mainElement);
+	
 	$(mainElement).uniqueId();
+	
 	if(options){
 		var title = options.title;
 		if(title){
@@ -9,6 +12,6 @@ processContainer = function(container,componentInfo){
 			$(mainElement).append(titleElement);
 		}
 	}
-	$(container).append(mainElement);
+
 	processComponents(mainElement,componentInfo.components);
 }

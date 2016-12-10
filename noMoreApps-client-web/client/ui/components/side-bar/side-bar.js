@@ -21,7 +21,7 @@ Template.sideBar.events({
     "click .appInfo": function(event) {
         event.preventDefault();
         openLoading();
-        var appInfo = JSON.parse(event.currentTarget.getAttribute('data-app'));
+        var appInfo = $(event.currentTarget).data("app");
         Meteor.call('connect',appInfo,null,null,function(error, response) {
         	if(error){
         		closeLoading();

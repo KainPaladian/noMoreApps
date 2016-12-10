@@ -11,6 +11,7 @@ processConnectResponse = function(apiResponse) {
 }
 
 processComponent = function(container,componentInfo){
+
 	if(componentInfo.type==COMPONENT_TYPE_CONTAINER){
 		return processContainer(container,componentInfo);
 	}
@@ -23,20 +24,19 @@ processComponent = function(container,componentInfo){
 	if(componentInfo.type==COMPONENT_TYPE_COMMAND){
 		return processCommand(container,componentInfo);
 	}
+	if(componentInfo.type==COMPONENT_TYPE_FORM){
+		return processForm(container,componentInfo);
+	}
+	if(componentInfo.type==COMPONENT_TYPE_INPUT){
+		return processInput(container,componentInfo);
+	}
 }
 
 processComponents = function(container,componentsInfo){
-	var array = $.isArray(componentsInfo);
-	console.log(componentsInfo);
-	console.log(array);
 	if(componentsInfo){
-		if(array){
-			$(componentsInfo).each(function(index,componentInfo){
-				processComponent(container,componentInfo);
-			});
-		}else{
-			processComponent(componentsInfo);
-		}		
+		$(componentsInfo).each(function(index,componentInfo){
+			processComponent(container,componentInfo);
+		});
 	}
 }
 
