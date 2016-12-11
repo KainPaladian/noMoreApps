@@ -11,6 +11,11 @@ processForm = function(container,componentInfo){
 		
 		var submitValue = options.submitValue;
 		var request = options.request;
+		var enctype = options.enctype;
+
+		if(enctype){
+			$(mainElement).attr("enctype",enctype);
+		}
 
 		if(submitValue){
 			$(submitElement).html(submitValue);
@@ -18,18 +23,19 @@ processForm = function(container,componentInfo){
 
 		if(request){
 			$(mainElement).submit(function(event){
-				console.log(event);
+				var payLoad = $(mainElement).serializeArray();
 				openLoading();
 				Meteor.call(
 				 	'sendTerminalRequest',
 				 	request.url,
 				 	request.method,
-				 	{},
+				 	payLoad,
 				 	function(error, response) {
 			        	if(error){
 			        		closeLoading();
 			        		throw new Meteor.Error(error);
 			        	}
+			        	processApiResponse(response.data);
 			            closeLoading();
        				}
        			);

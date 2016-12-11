@@ -1,39 +1,58 @@
-/*<div class="your-class">
-  <div>your content</div>
-  <div>your content</div>
-  <div>your content</div>
-</div>*/
+processCarousel = function(container,componentInfo){
+    var components = componentInfo.components;
+    var options = componentInfo.options;
+    var mainElement = $("<div></div>").addClass("component-carousel");
+    
+    $(container).append(mainElement);
 
-var selectorRender = "#render";
+    if(options){
+    }
+    
+    if(components){
+        $(components).each(function(index,childrenComponentInfo){
+            var itemElement = $("<div></div>");
+            if(index==1){
+                $(itemElement).addClass("slick-active");
+            }
+            $(mainElement).append(itemElement);
+            $(itemElement).uniqueId();
+            processComponent(itemElement,childrenComponentInfo);
+        });
+    }
 
-renderCarousel = function(noMoreResponse,apiResponse) {
-
-    var itemsJSON = apiResponse.body.items;
-
-    $(selectorRender).append("<h2>"+apiResponse.title+"</h2>");
-
-    var idCarousel = "carousel-example-generic";
-    var selectorCarousel = "#"+idCarousel;
-
-    $(selectorRender).append("<div id=\""+idCarousel+"\"></div>");
-
-    $(itemsJSON).each(function(index,itemJSON){
-        var itemJSON = itemJSON.apiResponse;
-        var body = itemJSON.body;
-        console.log(itemJSON);
-        if(itemJSON.type=="IMAGE"){
-          $(selectorCarousel).append("<div><img src=\""+body.url+"\" class=\"img-responsive\"></img></div>");
+    $(mainElement).slick({
+      dots: true,
+      infinite: false,
+      speed: 300,
+      slidesToShow: 3,
+      slidesToScroll: 3,
+      responsive: [
+        {
+          breakpoint: 1024,
+          settings: {
+            slidesToShow: 3,
+            slidesToScroll: 3,
+            infinite: true,
+            dots: true
+          }
+        },
+        {
+          breakpoint: 600,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 2
+          }
+        },
+        {
+          breakpoint: 480,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1
+          }
         }
+        // You can unslick at a given breakpoint now by adding:
+        // settings: "unslick"
+        // instead of a settings object
+      ]
     });
-
-    $(selectorCarousel).slick({
-        arrows: true,
-        dots: true,
-        infinite: true,
-        speed: 300,
-        slidesToShow: 1,
-        adaptiveHeight: true
-    });
-
-    $('.slick-prev:after').html("<span class=\"glyphicon glyphicon-triangle-right\" aria-hidden=\"true\"></span>");
 }

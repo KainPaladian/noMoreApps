@@ -8,8 +8,8 @@ getDefaultOptions = function(){
 
 buildTerminalDefaultRequest = function(messageType,payload,userInfo,deviceInfo){
 	var request =  {			
-			type: messageType,
-			body: {}
+		type: messageType,
+		body: {}
 	};
 	if(userInfo){
 		request.body.user = userInfo;

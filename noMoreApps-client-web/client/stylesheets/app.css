@@ -76,9 +76,6 @@
 .slick-next:before {
   color: black;
 }
-.slick-prev:before, .slick-next:before {
-    font-size: 50px;
-}
 /* ======== The side navigation menu =========*/
 
 /* ======== Loading ==========================*/

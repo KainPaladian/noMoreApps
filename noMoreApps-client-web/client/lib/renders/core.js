@@ -3,6 +3,14 @@ processApiResponse = function(apiResponse) {
 	if(apiResponse.type==CONNECT_RESPONSE){
 		processConnectResponse(apiResponse);
 	}
+	if(apiResponse.type==API_RESPONSE){
+		processAPIResponse(apiResponse);
+	}
+}
+
+processAPIResponse = function(apiResponse) {
+	processAppearance(getRenderContainer(),apiResponse);
+	processLayout(getRenderContainer(),apiResponse);
 }
 
 processConnectResponse = function(apiResponse) {
@@ -11,7 +19,6 @@ processConnectResponse = function(apiResponse) {
 }
 
 processComponent = function(container,componentInfo){
-
 	if(componentInfo.type==COMPONENT_TYPE_CONTAINER){
 		return processContainer(container,componentInfo);
 	}
@@ -30,6 +37,17 @@ processComponent = function(container,componentInfo){
 	if(componentInfo.type==COMPONENT_TYPE_INPUT){
 		return processInput(container,componentInfo);
 	}
+	if(componentInfo.type==COMPONENT_TYPE_THUMBNAIL){
+		return processThumbnail(container,componentInfo);
+	}
+	if(componentInfo.type==COMPONENT_TYPE_THUMBNAIL){
+		console.log(componentInfo);
+		return processThumbnail(container,componentInfo);
+	}
+	if(componentInfo.type==COMPONENT_TYPE_CAROUSEL){
+		console.log(componentInfo);
+		return processCarousel(container,componentInfo);
+	}	
 }
 
 processComponents = function(container,componentsInfo){
