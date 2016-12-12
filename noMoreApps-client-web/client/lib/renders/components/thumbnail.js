@@ -7,7 +7,6 @@ processThumbnail = function(container,componentInfo){
 	var thumbnailElement = $("<div></div>").addClass("thumbnail");
 	var captionElement = $("<div></div>").addClass("caption text-center");
 
-	$(container).append(mainElement);
 	$(mainElement).append(secondElement);
 	$(secondElement).append(thumbnailElement);
 	$(thumbnailElement).append(captionElement);
@@ -22,8 +21,7 @@ processThumbnail = function(container,componentInfo){
 		var caption = options.caption;
 
 		if(image){
-			var imageElement = $("<img></img>").attr("src",image.options.src);
-			console.log(imageElement);
+			var imageElement = processImage(thumbnailElement,image);
 			$(thumbnailElement).prepend(imageElement);
 			$(imageElement).uniqueId();
 		}
@@ -48,4 +46,5 @@ processThumbnail = function(container,componentInfo){
 	}
 
 	processComponents(mainElement,componentInfo.components);
+	return mainElement;
 }

@@ -2,24 +2,20 @@ processCarousel = function(container,componentInfo){
     var components = componentInfo.components;
     var options = componentInfo.options;
     var mainElement = $("<div></div>").addClass("component-carousel");
-    
-    $(container).append(mainElement);
 
     if(options){
     }
     
     if(components){
         $(components).each(function(index,childrenComponentInfo){
-            var itemElement = $("<div></div>");
-            if(index==1){
-                $(itemElement).addClass("slick-active");
-            }
+            var itemElement = $("<div></div>").addClass("component-carousel-item");
             $(mainElement).append(itemElement);
             $(itemElement).uniqueId();
             processComponent(itemElement,childrenComponentInfo);
         });
     }
 
+  $(document).ready(function() {
     $(mainElement).slick({
       dots: true,
       infinite: false,
@@ -50,9 +46,9 @@ processCarousel = function(container,componentInfo){
             slidesToScroll: 1
           }
         }
-        // You can unslick at a given breakpoint now by adding:
-        // settings: "unslick"
-        // instead of a settings object
       ]
     });
+  });
+  
+  return mainElement;
 }

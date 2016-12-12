@@ -1,8 +1,6 @@
 processText = function(container,componentInfo){
 	var options = componentInfo.options;
 	var mainElement = $("<p></p>").addClass("component-text");
-	$(container).append(mainElement);
-	
 	$(mainElement).uniqueId();
 	if(options){
 		var value = options.value;
@@ -10,4 +8,5 @@ processText = function(container,componentInfo){
 	}
 	
 	processComponents(container,componentInfo.components);
+	return mainElement;
 }

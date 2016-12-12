@@ -4,7 +4,6 @@ processCarouselBoostrap = function(container,componentInfo){
     var mainElement = $("<div></div>").addClass("component-carousel carousel slide").data("ride","carousel");
     var carouselInnerElement = $("<div></div>").addClass("carousel-inner").attr("role","listbox");
     
-    $(container).append(mainElement);
     $(mainElement).append(carouselInnerElement);
     
     $(mainElement).uniqueId();
@@ -25,5 +24,7 @@ processCarouselBoostrap = function(container,componentInfo){
         });
     }
 
-    $(mainElement).carousel()
+    $(mainElement).carousel();
+
+    return mainElement;
 }

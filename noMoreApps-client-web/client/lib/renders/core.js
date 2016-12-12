@@ -19,35 +19,48 @@ processConnectResponse = function(apiResponse) {
 }
 
 processComponent = function(container,componentInfo){
+	var component = null;
 	if(componentInfo.type==COMPONENT_TYPE_CONTAINER){
-		return processContainer(container,componentInfo);
+		component = processContainer(container,componentInfo);
+		$(container).append(component);
 	}
 	if(componentInfo.type==COMPONENT_TYPE_TEXT){
-		return processText(container,componentInfo);
+		component = processText(container,componentInfo);
+		$(container).append(component);
 	}
 	if(componentInfo.type==COMPONENT_TYPE_COMMAND_LIST){
-		return processCommandList(container,componentInfo);
+		component = processCommandList(container,componentInfo);
+		$(container).append(component);
 	}
 	if(componentInfo.type==COMPONENT_TYPE_COMMAND){
-		return processCommand(container,componentInfo);
+		component = processCommand(container,componentInfo);
+		$(container).append(component);
 	}
 	if(componentInfo.type==COMPONENT_TYPE_FORM){
-		return processForm(container,componentInfo);
+		component = processForm(container,componentInfo);
+		$(container).append(component);
 	}
 	if(componentInfo.type==COMPONENT_TYPE_INPUT){
-		return processInput(container,componentInfo);
+		component = processInput(container,componentInfo);
+		$(container).append(component);
 	}
 	if(componentInfo.type==COMPONENT_TYPE_THUMBNAIL){
-		return processThumbnail(container,componentInfo);
-	}
-	if(componentInfo.type==COMPONENT_TYPE_THUMBNAIL){
-		console.log(componentInfo);
-		return processThumbnail(container,componentInfo);
+		component = processThumbnail(container,componentInfo);
+		$(container).append(component);
 	}
 	if(componentInfo.type==COMPONENT_TYPE_CAROUSEL){
-		console.log(componentInfo);
-		return processCarousel(container,componentInfo);
-	}	
+		component = processCarousel(container,componentInfo);
+		$(container).append(component);
+	}
+	if(componentInfo.type==COMPONENT_TYPE_MODAL){
+		component = processModal(container,componentInfo);
+		$(container).append(component);
+	}
+	if(componentInfo.type==COMPONENT_TYPE_IMAGE){
+		component = processImage(container,componentInfo);
+		$(container).append(component);
+	}
+	return component;
 }
 
 processComponents = function(container,componentsInfo){
@@ -66,4 +79,11 @@ renderRequest = function(noMoreResponse,apiConfigRequest) {
 			renderForm(noMoreResponse,apiConfigRequest);			
 		}
 	}	
+}
+
+createComponentInfo = function(type,options,components){
+	var componentInfo = {};
+	componentInfo.type = type;
+	componentInfo.options = options;
+	componentInfo.components = components;
 }

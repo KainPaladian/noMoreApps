@@ -4,7 +4,6 @@ processInput = function(container,componentInfo){
 	var formGroupElement = $("<div></div>").addClass("form-group");
 
 	$(formGroupElement).append(mainElement);
-	$(container).append(formGroupElement);
 
 	$(mainElement).uniqueId();
 	
@@ -26,4 +25,5 @@ processInput = function(container,componentInfo){
 			$(mainElement).attr("type",type);
 		}
 	}
+	return formGroupElement;
 }

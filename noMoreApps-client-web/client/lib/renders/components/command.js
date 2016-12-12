@@ -1,16 +1,15 @@
 processCommand = function(container,componentInfo){
 	var options = componentInfo.options;
 	var mainElement = $("<button></button>").addClass("component-command btn btn-default");
-	$(container).append(mainElement);
 	
-	var parentContainer = $(mainElement).closest(".component-container");
-
 	$(mainElement).uniqueId();
 	
 	if(options){
 		
 		var value = options.value;
 		var request = options.request;
+		var modalInfo = options.modal;
+		var modalElement = null;
 
 		if(value){
 			$(mainElement).html(value);
@@ -28,15 +27,30 @@ processCommand = function(container,componentInfo){
 				}
 			});
 		}
+
+		if(modalInfo){
+			modalElement = processComponent(getRenderContainer(),modalInfo);
+			$(mainElement).attr("data-toggle","modal");
+			$(mainElement).attr("data-target","#"+$(modalElement).attr("id"));
+		}
+
 		if(componentInfo.components){
-			$(mainElement).click(function() {
-				//clean the container
+			$(mainElement).click(function(event) {
+				var mainElement = event.currentTarget;
+				var parentContainer = $(mainElement).closest(".component-container");
+				var modalTarget = $(mainElement).data("target");
+				var modalElement = $(modalTarget);
+
+				if(modalTarget){
+					parentContainer = getModalBody(modalElement);
+				}
 				$(parentContainer).empty();
 				//render components child in parent container
-				processComponents(parentContainer,componentInfo.components);
+				processComponents(parentContainer,componentInfo.components);			
 			});
 		}
 	}
+	return mainElement;
 }
 
 

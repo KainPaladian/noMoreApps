@@ -1,7 +1,6 @@
 processContainer = function(container,componentInfo){
 	var options = componentInfo.options;
 	var mainElement = $("<div></div>").addClass("component-container"); 
-	$(container).append(mainElement);
 	
 	$(mainElement).uniqueId();
 	
@@ -14,4 +13,5 @@ processContainer = function(container,componentInfo){
 	}
 
 	processComponents(mainElement,componentInfo.components);
+	return mainElement;
 }

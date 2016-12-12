@@ -1,7 +1,6 @@
 processForm = function(container,componentInfo){
 	var options = componentInfo.options;
 	var mainElement = $("<form></form>").addClass("component-form");
-	$(container).append(mainElement);
 
 	var submitElement = $("<button type=\"submit\">Submit</button>").addClass("btn btn-primary");
 
@@ -46,6 +45,6 @@ processForm = function(container,componentInfo){
 	}
 
 	processComponents(mainElement,componentInfo.components);
-
 	$(mainElement).append(submitElement);
+	return mainElement;
 }
