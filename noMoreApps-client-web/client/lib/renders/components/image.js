@@ -1,20 +1,31 @@
 processImage = function(container,componentInfo){
 	var options = componentInfo.options;
-	var mainElement = $("<img></img>").addClass("component-image");
+	var mainElement = $("<div></div>").addClass("component-image");
+	var imgElement = $("<img></img>").addClass("component-image-img img-responsive");
+	
+	$(mainElement).append(imgElement);
 	
 	$(mainElement).uniqueId();
+	$(imgElement).uniqueId();
 	
 	if(options){
 		var src = options.src;
 		var horizontalPosition = options.horizontalPosition;
 		if(src){
-			$(mainElement).attr("src",src);
+			$(imgElement).attr("src",src);
 		}
 		if(horizontalPosition){
 			if(horizontalPosition=="center"){
-				$(mainElement).addClass("center-block");		
+				$(imgElement).addClass("center-block");		
 			}
 		}
 	}
+	var loadingInfo = {type:"LOADING"};
+	var loadingElement = processComponent(mainElement,loadingInfo);
+
+	$(imgElement).on("load",function() {
+  		$(loadingElement).hide();
+	});	
+
 	return mainElement;
 }

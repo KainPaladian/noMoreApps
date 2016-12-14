@@ -23,6 +23,9 @@ processInput = function(container,componentInfo){
 
 		if(type){
 			$(mainElement).attr("type",type);
+			if(type=="FILE"){
+				$(mainElement).removeClass("form-control");
+			}
 		}
 	}
 	return formGroupElement;

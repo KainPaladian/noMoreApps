@@ -8,8 +8,19 @@ processCommand = function(container,componentInfo){
 		
 		var value = options.value;
 		var request = options.request;
+		var type = options.type;
+		var content = options.content;
 		var modalInfo = options.modal;
 		var modalElement = null;
+
+		if(type=="link"){
+			mainElement = $("<a href=\"#\"></a>").addClass("component-command");
+			$(mainElement).uniqueId();
+		}
+
+		if(content){
+			processComponents(mainElement,content);
+		}
 
 		if(value){
 			$(mainElement).html(value);

@@ -60,6 +60,10 @@ processComponent = function(container,componentInfo){
 		component = processImage(container,componentInfo);
 		$(container).append(component);
 	}
+	if(componentInfo.type==COMPONENT_TYPE_LOADING){
+		component = processLoading(container,componentInfo);
+		$(container).append(component);
+	}
 	return component;
 }
 

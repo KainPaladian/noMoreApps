@@ -4,7 +4,13 @@ processText = function(container,componentInfo){
 	$(mainElement).uniqueId();
 	if(options){
 		var value = options.value;
-		$(mainElement).text(value).addClass("lead");
+		var richText = options.richText
+		if(richText){	
+			console.log("passou");
+			$(mainElement).append($.parseHTML(value));
+		}else{
+			$(mainElement).text(value).addClass("lead");
+		}
 	}
 	
 	processComponents(container,componentInfo.components);

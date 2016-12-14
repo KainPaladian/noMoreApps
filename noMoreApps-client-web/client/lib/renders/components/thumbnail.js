@@ -3,7 +3,6 @@ processThumbnail = function(container,componentInfo){
 	
 	var mainElement = $("<div></div>").addClass("component-thumbnail"); 
 	var secondElement = $("<div></div>");
-	//addClass("col-sm-6 col-md-4"); 
 	var thumbnailElement = $("<div></div>").addClass("thumbnail");
 	var captionElement = $("<div></div>").addClass("caption text-center");
 
@@ -21,7 +20,7 @@ processThumbnail = function(container,componentInfo){
 		var caption = options.caption;
 
 		if(image){
-			var imageElement = processImage(thumbnailElement,image);
+			var imageElement = processComponent(thumbnailElement,image);
 			$(thumbnailElement).prepend(imageElement);
 			$(imageElement).uniqueId();
 		}
