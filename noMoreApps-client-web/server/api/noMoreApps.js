@@ -14,6 +14,11 @@ Meteor.methods({
 	getApps : function(){
 		var pathBase = getNoMoreAppsPathBase();
 		var apiApps = pathBase+Meteor.settings.noMoreAppsApi.getApps;
-		return HTTP.call("GET",apiApps,getDefaultOptions());	
+		try{
+			return HTTP.call("GET",apiApps,getDefaultOptions());
+		}catch(e){
+			console.log(e);
+			throw e;
+		}		
 	}
 });
