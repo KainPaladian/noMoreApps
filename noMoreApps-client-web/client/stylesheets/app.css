@@ -1,16 +1,6 @@
 /* ======== The side navigation menu =========*/
-.overlay-content {
-    /*position: relative;*/
-    /*top: 25%;*/
-    /*text-align: left;*/
-    /*margin-top: 30px;*/
-    /*width: 100%;    */
-    /*padding:15px;*/
-}
-
 .overlay-content h4 {
     font-weight: bold;
-    /*font-size: 24px;*/
 }
 
 .overlay-content a {
