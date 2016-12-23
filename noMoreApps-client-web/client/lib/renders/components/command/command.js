@@ -1,6 +1,7 @@
 processCommand = function(container,componentInfo){
 	var options = componentInfo.options;
 	var mainElement = $("<button></button>").addClass("component-command btn btn-default");
+	$(mainElement).attr("role","button");
 	
 	$(mainElement).uniqueId();
 	

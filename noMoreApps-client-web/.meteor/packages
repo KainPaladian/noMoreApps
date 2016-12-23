@@ -32,3 +32,4 @@ standard-minifiers
 useraccounts:bootstrap
 npm-bcrypt
 accounts-password
+useraccounts:flow-routing
