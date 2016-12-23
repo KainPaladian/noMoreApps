@@ -29,3 +29,6 @@ udondan:slick
 session
 mrt:jquery-ui
 standard-minifiers
+useraccounts:bootstrap
+npm-bcrypt
+accounts-password

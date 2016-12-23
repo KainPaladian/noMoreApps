@@ -18,7 +18,7 @@ Template.sideBar.helpers({
 });
 
 Template.sideBar.events({
-    "click .appInfo": function(event) {
+    "click .app-info": function(event) {
         event.preventDefault();
         openLoading();
         var appInfo = $(event.currentTarget).data("app");
@@ -28,7 +28,6 @@ Template.sideBar.events({
         		throw new Meteor.Error(error);
         	}
             processApiResponse(response.data);
-        	closeNav();
             closeLoading();
         });
     }
