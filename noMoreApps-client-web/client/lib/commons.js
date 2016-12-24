@@ -13,3 +13,12 @@ getRenderContainer = function(){
 getContainer = function(){
 	return $(SELECTOR_MAIN_BODY);
 }
+
+hasBotConnected = function(){
+	var botConnected = Session.get(BOT_CONNECTED);
+	if(botConnected){
+		return true;
+	}else{
+		return false;
+	}
+}

@@ -1,19 +1,26 @@
 processApiResponse = function(apiResponse) {
-	getRenderContainer().empty();
 	if(apiResponse.type==CONNECT_RESPONSE){
-		processConnectResponse(apiResponse);
+		processTypeConnectResponse(apiResponse);
 	}
 	if(apiResponse.type==API_RESPONSE){
-		processAPIResponse(apiResponse);
+		processTypeAPIResponse(apiResponse);
 	}
 }
 
-processAPIResponse = function(apiResponse) {
+processTypeAPIResponse = function(apiResponse) {
 	processAppearance(getRenderContainer(),apiResponse);
-	processLayout(getRenderContainer(),apiResponse);
+	var renderContainer = null;
+	if(hasBotConnected()){
+		renderContainer = $(".component-container").first();
+	}else{
+		renderContainer = getRenderContainer();
+	}
+	renderContainer.empty();
+	processLayout(renderContainer,apiResponse);
 }
 
-processConnectResponse = function(apiResponse) {
+processTypeConnectResponse = function(apiResponse) {
+	getRenderContainer().empty();
 	processAppearance(getRenderContainer(),apiResponse);
 	processLayout(getRenderContainer(),apiResponse);
 }

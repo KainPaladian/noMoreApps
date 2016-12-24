@@ -49,6 +49,12 @@ processCommand = function(container,componentInfo){
 			$(mainElement).click(function(event) {
 				var mainElement = event.currentTarget;
 				var parentContainer = $(mainElement).closest(".component-container");
+				
+				if(parentContainer.length==0){
+					parentContainer = $(".component-container").first();
+					console.log(parentContainer);
+				}		
+				
 				var modalTarget = $(mainElement).data("target");
 				var modalElement = $(modalTarget);
 
