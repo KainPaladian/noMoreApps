@@ -11,12 +11,6 @@ processLayout = function(container,apiResponse){
 
 processLayoutDefault = function(container,layoutInfo){
 
-	// var overContainer = $("<div></div>").addClass("component-container"); 
-	// $(overContainer).uniqueId();
-
-	// $(overContainer).append(container);
-	// $(parentContainer).append(overContainer);
-
 	var innerContainerInfo = layoutInfo.container;
 	
 	processComponent(container,innerContainerInfo);
