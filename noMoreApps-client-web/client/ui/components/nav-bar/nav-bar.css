@@ -1,4 +1,23 @@
 .navbar-brand {
-    padding-top: 12px !important;
-    padding-bottom: 15px !important;
+	padding-top: auto !important;
+	padding-bottom: auto !important;
+}
+
+.user-info {
+	padding-top: auto !important;
+	padding-bottom: auto !important;
+}
+
+.navbar-brand {
+	height: auto !important;
+}
+
+@media screen and (max-width: 768px) {
+	.navbar-brand {
+	    padding-top: 7px !important;
+	    padding-bottom: 15px !important;
+	}
+	.user-info {
+
+	}
 }

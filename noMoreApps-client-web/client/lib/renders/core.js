@@ -91,3 +91,25 @@ createComponentInfo = function(type,options,components){
 	componentInfo.options = options;
 	componentInfo.components = components;
 }
+
+getUserInfo = function(){
+	var user = Meteor.user();
+	var userInfo = {};
+	if(user){
+		userInfo.id = user._id;
+		userInfo.name = user.profile.name;
+		userInfo.email = user.emails[0].address;
+		userInfo.language= navigator.language;
+	}
+	return userInfo;
+}
+
+getDeviceInfo = function(){
+	var deviceInfo = {};
+	deviceInfo.type = "web";
+	deviceInfo.appCodeName = navigator.appCodeName;
+	deviceInfo.appName = navigator.appName;
+	deviceInfo.appVersion = navigator.appVersion;
+	deviceInfo.platform = navigator.platform;
+	return deviceInfo;
+}

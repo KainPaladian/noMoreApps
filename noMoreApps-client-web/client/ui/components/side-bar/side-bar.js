@@ -28,6 +28,7 @@ Template.sideBar.events({
         		throw new Meteor.Error(error);
         	}
             processApiResponse(response.data);
+            Session.set(BOT_CONNECTED, appInfo);
             closeLoading();
         });
     }

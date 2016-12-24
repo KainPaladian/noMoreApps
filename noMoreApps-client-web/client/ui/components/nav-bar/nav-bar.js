@@ -1,10 +1,18 @@
 Template.navBar.helpers({
   userName: function() {
-    return Meteor.user().profile.name
+  	if(Meteor.user()){
+    	return Meteor.user().profile.name
+	}
   },
   userEmail: function() {
   	if(Meteor.user().emails){
   		return Meteor.user().emails[0].address;	
+  	}
+  },
+  botConnected: function() {
+  	var botConnected = Session.get(BOT_CONNECTED);
+  	if(botConnected){
+  		return botConnected;	
   	}
   }
 });

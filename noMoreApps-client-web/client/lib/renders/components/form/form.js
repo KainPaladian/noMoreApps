@@ -29,6 +29,8 @@ processForm = function(container,componentInfo){
 				 	request.url,
 				 	request.method,
 				 	payLoad,
+				 	getUserInfo(),
+				 	getDeviceInfo(),
 				 	function(error, response) {
 			        	if(error){
 			        		closeLoading();

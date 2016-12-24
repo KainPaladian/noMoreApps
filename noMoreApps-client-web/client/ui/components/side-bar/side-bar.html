@@ -6,13 +6,16 @@
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
-					<h4 class="modal-title" id="gridSystemModalLabel">Bots</h4>
+					<h4 class="modal-title" id="gridSystemModalLabel">
+					<img src="bots.svg" />
+					Bots
+					</h4>
 				</div>
 				<div class="modal-body">
 					<ul class="nav nav-pills nav-stacked">
 						{{#each apps}}
 							<li role="presentation">
-								<a id="app-{{@index}}" href="#" class="app-info" data-app={{stringify this}} data-dismiss="modal">
+								<a id="app-{{@index}}" href="#" class="app-info well well-lg " data-app={{stringify this}} data-dismiss="modal">
 									<div class="row">
 										<div class="col-sm-2">
 											{{#if logo}}
@@ -25,7 +28,6 @@
 										</div>
 									</div>
 								</a>
-								<span class="divider"></span>
 							</li>
 						{{/each}}
 					</ul>      
