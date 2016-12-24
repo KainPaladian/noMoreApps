@@ -21,7 +21,8 @@ Template.sideBar.events({
     "click .app-info": function(event) {
         event.preventDefault();
         openLoading();
-        var appInfo = $(event.currentTarget).data("app");
+        var botElement = $(event.currentTarget);
+        var appInfo = $(botElement).data("app");
         Meteor.call('connect',appInfo,null,null,function(error, response) {
         	if(error){
         		closeLoading();
@@ -29,6 +30,9 @@ Template.sideBar.events({
         	}
             processApiResponse(response.data);
             Session.set(BOT_CONNECTED, appInfo);
+            $(".li-bot").removeClass("active");
+            var liBotElement = $(botElement).closest(".li-bot");
+            liBotElement.addClass("active");
             closeLoading();
         });
     }
