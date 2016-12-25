@@ -1,5 +1,5 @@
 <template name="navBar">
-<nav class="navbar navbar-inverse navbar-fixed-top">
+<nav class="navbar navbar-inverse navbar-fixed-top isModified">
   <div class="container-fluid">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar-collapse-1" aria-expanded="false">
@@ -8,20 +8,25 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a href="#" class="navbar-brand"  data-toggle="modal" data-target=".modal-bots">
-        <img alt="Bots" src="bots_white.svg">
-      </a>
+        <a href="#" class="navbar-brand"  data-toggle="modal" data-target=".modal-bots">
+          <img alt="Bots" src="bots_white.svg">
+        </a>
     </div>
     <div class="collapse navbar-collapse" id="bs-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-left">
-        <li></li>
+        <li>
+          <a href="#" class="navbar-bots" data-toggle="modal" data-target=".modal-bots">
+            <img alt="Bots" src="bots_white.svg">
+          </a>
+        </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         {{#if botConnected }}
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-              <img src="{{botConnected.logo}}" class="img-circle app-logo-min"/>
-              <span>{{botConnected.name}}</span>
+              <span>Connected in </span>
+              <span><em><strong>{{botConnected.name}}</strong></em></span>
+              <img src="{{botConnected.logo}}" class="img-circle app-logo-min"/>              
             </a>
             <ul class="dropdown-menu">
               <li>
@@ -38,7 +43,7 @@
         <li class="dropdown user-info">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
             <span class="glyphicon glyphicon-user"></span>
-            {{userName}}
+            <span>{{userName}}</span>
           </a>
           <ul class="dropdown-menu">
             <li>

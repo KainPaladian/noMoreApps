@@ -1,21 +1,22 @@
-.navbar-brand {
-	padding-top: auto !important;
-	padding-bottom: auto !important;
+.navbar.isModified a {
+    padding:0 15px;
+    line-height:80px;    
 }
 
-.user-info {
-	padding-top: auto !important;
-	padding-bottom: auto !important;
-}
-
-.navbar-brand {
-	height: auto !important;
+.navbar-header{
+	display: none!important;
 }
 
 @media screen and (max-width: 768px) {
 	.navbar-brand {
 	    padding-top: 7px !important;
 	    padding-bottom: 15px !important;
+	}
+	.navbar-header{
+		display: block!important;
+	}
+	.navbar-bots{
+		display: none!important;
 	}
 	.user-info {
 
