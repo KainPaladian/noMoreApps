@@ -1,0 +1,25 @@
+.component-navbar .component-command
+{
+	width: 100%;
+}
+
+.component-navbar-name-bot{
+	line-height: 50px;
+	float: left;
+}
+
+.component-navbar-name-bot img{
+	margin-right: 10px;
+}
+
+@media screen and (max-width: 768px) {
+	.component-navbar .navbar-brand {
+	    padding-top: 7px !important;
+	    padding-bottom: 15px !important;
+	}
+	.component-navbar-name-bot{
+		line-height: 20px;
+		float: left;
+	}
+
+}

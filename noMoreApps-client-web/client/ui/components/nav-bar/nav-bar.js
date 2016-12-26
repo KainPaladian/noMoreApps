@@ -10,7 +10,7 @@ Template.navBar.helpers({
   	}
   },
   botConnected: function() {
-  	var botConnected = Session.get(BOT_CONNECTED);
+  	var botConnected = getBotConnected();
   	if(botConnected){
   		return botConnected;	
   	}

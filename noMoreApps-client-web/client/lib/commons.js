@@ -22,3 +22,8 @@ hasBotConnected = function(){
 		return false;
 	}
 }
+
+getBotConnected = function(){
+	return Session.get(BOT_CONNECTED);	
+}
+

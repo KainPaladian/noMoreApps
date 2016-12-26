@@ -17,7 +17,7 @@ processLayoutDefault = function(container,layoutInfo){
 	
 	processComponent(container,innerContainerInfo);
 
-	if(layoutInfo.commandList){
-		processComponent(getRenderContainer(),layoutInfo.commandList);
+	if(layoutInfo.navbar){
+		processComponent(getRenderContainer(),layoutInfo.navbar);
 	}	
 }

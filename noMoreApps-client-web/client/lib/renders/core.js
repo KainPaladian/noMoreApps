@@ -71,6 +71,10 @@ processComponent = function(container,componentInfo){
 		component = processLoading(container,componentInfo);
 		$(container).append(component);
 	}
+	if(componentInfo.type==COMPONENT_TYPE_NAVBAR){
+		component = processNavbar(container,componentInfo);
+		$(container).append(component);
+	}
 	return component;
 }
 

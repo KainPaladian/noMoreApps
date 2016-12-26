@@ -3,16 +3,16 @@
     line-height:80px;    
 }
 
-.navbar-header{
+.navbar-talkabot .navbar-header{
 	display: none!important;
 }
 
 @media screen and (max-width: 768px) {
-	.navbar-brand {
+	.navbar-talkabot .navbar-brand {
 	    padding-top: 7px !important;
 	    padding-bottom: 15px !important;
 	}
-	.navbar-header{
+	.navbar-talkabot .navbar-header{
 		display: block!important;
 	}
 	.navbar-bots{
