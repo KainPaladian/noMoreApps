@@ -1,6 +1,6 @@
 .navbar.isModified a {
-    padding:0 15px;
-    line-height:80px;    
+    padding:0 10px;
+    line-height:50px;    
 }
 
 .navbar-talkabot .navbar-header{
@@ -17,8 +17,5 @@
 	}
 	.navbar-bots{
 		display: none!important;
-	}
-	.user-info {
-
 	}
 }

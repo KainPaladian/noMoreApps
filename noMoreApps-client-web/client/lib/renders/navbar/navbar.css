@@ -3,6 +3,12 @@
 	width: 100%;
 }
 
+.component-navbar li
+{
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
 .component-navbar-name-bot{
 	line-height: 50px;
 	float: left;

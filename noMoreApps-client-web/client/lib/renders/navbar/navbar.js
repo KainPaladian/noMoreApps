@@ -14,7 +14,7 @@ processNavbar = function(container,componentInfo){
 	var collapseToggle = $("<button type=\"button\"><span class=\"sr-only\">Toggle navigation</span><span class=\"icon-bar\"></span><span class=\"icon-bar\"></span><span class=\"icon-bar\"></span></button>").addClass("navbar-toggle collapsed").attr("data-toggle","collapse").attr("aria-expanded","false");
     
 	var botConnected = getBotConnected();	
-	nameBotElement.html(botConnected.name);
+	// nameBotElement.html(botConnected.name);
 	logoBotElement.attr("src",botConnected.logo);
 	
 
@@ -52,7 +52,7 @@ processNavbar = function(container,componentInfo){
 
             var component = processComponent(collapseLiElement,childrenComponentInfo);
             if(childrenComponentInfo.type==COMPONENT_TYPE_COMMAND){
-            	component.addClass("navbar-btn");
+            	component.addClass("navbar-btn btn-info");
             }
         });
     }
