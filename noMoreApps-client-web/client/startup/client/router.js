@@ -5,15 +5,15 @@ FlowRouter.route('/', {
     }
 });
 
-AccountsTemplates.configureRoute('signIn', {
-  name: 'login',
-  path: '/login',
-  template: 'login',
-  layoutTemplate: 'layout',
-  layoutRegions: {},
-  contentRegion: 'main',
-  redirect: '/'
-});
+// AccountsTemplates.configureRoute('signIn', {
+//   name: 'login',
+//   path: '/login',
+//   template: 'login',
+//   layoutTemplate: 'layout',
+//   layoutRegions: {},
+//   contentRegion: 'main',
+//   redirect: '/'
+// });
 
 // AccountsTemplates.configureRoute('signUp', {
 //   name: 'signup',

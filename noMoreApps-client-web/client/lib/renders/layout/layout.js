@@ -12,6 +12,8 @@ processLayout = function(container,apiResponse){
 processLayoutDefault = function(container,layoutInfo){
 
 	var innerContainerInfo = layoutInfo.container;
+
+	innerContainerInfo.options.layoutRender = true;
 	
 	processComponent(container,innerContainerInfo);
 

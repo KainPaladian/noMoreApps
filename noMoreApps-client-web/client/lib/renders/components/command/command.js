@@ -40,7 +40,8 @@ processCommand = function(container,componentInfo){
 		}
 
 		if(modalInfo){
-			modalElement = processComponent(getRenderContainer(),modalInfo);
+			var renderContainerLayout = $(SELECTOR_RENDER_CONTAINER_LAYOUT);
+			modalElement = processComponent(renderContainerLayout,modalInfo);
 			$(mainElement).attr("data-toggle","modal");
 			$(mainElement).attr("data-target","#"+$(modalElement).attr("id"));
 		}

@@ -124,7 +124,7 @@ getUserInfo = function(){
 		userInfo.name = name;
 		userInfo.email = email;
 		userInfo.locale= locale;
-		userInfo.locale= gender;
+		userInfo.gender= gender;
 	}
 	return userInfo;
 }
