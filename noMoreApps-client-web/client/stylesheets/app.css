@@ -1,4 +1,6 @@
-body { padding-top: 45px; }
+body { 
+	padding-top: 30px; 
+}
 
 .app-logo {
     max-width: 50px;
@@ -11,8 +13,13 @@ body { padding-top: 45px; }
 }
 
 @media screen and (min-width: 768px) {
+	
+	body { 
+		padding-top: 45px; 
+	}
+
 	.app-logo {
 	    max-width: 100%;
 		min-height: 100%;
-	}
+	}	
 }

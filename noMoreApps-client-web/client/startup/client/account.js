@@ -3,7 +3,22 @@ AccountsTemplates.configure({
     defaultLayoutRegions: {},
     defaultContentRegion: 'main',
 
-    lowercaseUsername:true
+    lowercaseUsername:true,
+
+    showForgotPasswordLink:true,
+
+    homeRoutePath: '/',
+    enablePasswordChange: true,
+
+    texts: {
+      title: {
+        signIn: "",
+        signUp:""
+      },
+      button: {
+          signUp: "Create an Account",
+        }
+    }
 
 });
 
@@ -35,3 +50,4 @@ Accounts.onLogin(function(user){
 Accounts.onLogin(function(user){
   $('.modal-sign-up').modal('hide')
 });
+

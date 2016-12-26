@@ -33,3 +33,6 @@ useraccounts:bootstrap
 npm-bcrypt
 accounts-password
 useraccounts:flow-routing
+service-configuration
+accounts-ui
+accounts-facebook
