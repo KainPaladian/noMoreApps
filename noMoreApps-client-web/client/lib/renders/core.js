@@ -103,10 +103,28 @@ getUserInfo = function(){
 	var user = Meteor.user();
 	var userInfo = {};
 	if(user){
-		userInfo.id = user._id;
-		userInfo.name = user.profile.name;
-		userInfo.email = user.emails[0].address;
-		userInfo.language= navigator.language;
+
+		var name = null;
+		var email =null;
+		var locale = null;
+		var gender = null;
+
+		if(user.services.facebook){
+			var facebookInfo = user.services.facebook;
+			name = facebookInfo.name;
+			email = facebookInfo.email;
+			locale = facebookInfo.locale;
+			gender = facebookInfo.gender;
+		}else{
+			name = user.profile.name;
+			email = user.emails[0].address;
+			locale = navigator.language;
+		}
+		
+		userInfo.name = name;
+		userInfo.email = email;
+		userInfo.locale= locale;
+		userInfo.locale= gender;
 	}
 	return userInfo;
 }
