@@ -10,13 +10,13 @@ module.exports = {
   },
 
   meteor: {
-    name: 'noMoreApps-client-web',
+    name: 'talkabot-admin',
     path: '../',
     servers: {
       one: {}
     },
     env: {
-      ROOT_URL: 'http://web.talkabot.com.br',
+      ROOT_URL: 'http://admin.talkabot.com.br',
       MONGO_URL: 'mongodb://localhost/meteor'
     },
     dockerImage: 'abernix/meteord:base',

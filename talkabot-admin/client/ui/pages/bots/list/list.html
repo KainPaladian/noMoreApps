@@ -1,0 +1,30 @@
+<template name="listBots">
+	<h1>My Bots</h1>
+	<a href="/bot/insert" class="btn btn-primary" style="float:right;">
+  		<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+  		New
+	</a>	
+	<div class="table-responsive"> 
+		<table class="table table-striped table-hover">
+			<caption></caption>
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Description</th>
+					<th>URL Connection</th>
+					<th>Logo</th>
+				</tr>				
+			</thead>
+			<tbody>
+				{{#each bots}}
+					<tr id={{_id}} class="selectedBot">
+						<td>{{name}}</td>
+						<td>{{description}}</td>
+						<td>{{urlConnect}}</td>
+						<td><img src={{urlLogo}} class="bot-logo-min"/></td>
+					</tr>			
+				{{/each}}
+			</tbody>
+		</table>	
+	</div>
+</template>

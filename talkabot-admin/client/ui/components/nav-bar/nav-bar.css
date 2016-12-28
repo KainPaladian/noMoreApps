@@ -1,0 +1,21 @@
+.navbar.isModified a {
+    padding:0 10px;
+    line-height:50px;    
+}
+
+.navbar-talkabot .navbar-header{
+	display: none!important;
+}
+
+@media screen and (max-width: 768px) {
+	.navbar-talkabot .navbar-brand {
+	    padding-top: 7px !important;
+	    padding-bottom: 15px !important;
+	}
+	.navbar-talkabot .navbar-header{
+		display: block!important;
+	}
+	.navbar-bots{
+		display: none!important;
+	}
+}

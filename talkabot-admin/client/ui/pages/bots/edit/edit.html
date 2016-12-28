@@ -1,0 +1,13 @@
+<template name="editBot">
+	{{#if Template.subscriptionsReady}}
+		<h1>Update Bot</h1>
+		{{#autoForm collection="Bots" id="editBotForm" type="update" doc=bot}}
+		  {{> afQuickField name='name'}}
+		  {{> afQuickField name='description'}}
+		  {{> afQuickField name='urlConnect'}}
+		  {{> afQuickField name='urlLogo'}}
+		<button type="submit" class="btn btn-primary">Update</button>
+		<button id="deleteBot" type="button" class="btn btn-danger">Delete</button>
+		{{/autoForm}}
+	{{/if}}
+</template>

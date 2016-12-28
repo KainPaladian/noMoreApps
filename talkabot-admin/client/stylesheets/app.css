@@ -1,0 +1,12 @@
+body {
+	padding-top:40px;
+}
+
+.table-responsive {
+	width: 100%;
+}
+
+.bot-logo-min {
+    max-width: 40px !important;
+	min-height: 40px !important;
+}

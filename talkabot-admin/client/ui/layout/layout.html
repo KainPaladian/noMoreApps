@@ -1,0 +1,18 @@
+<template name="layout">
+	<head>	
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Talkabot Admin</title>
+	</head>
+	<body>
+		{{> loading}}
+		{{> navBar}}
+		{{> login}}
+		{{> signup}}
+		<div id="main" class="container">
+			{{> flashMessages}}
+			{{> Template.dynamic template=main}}
+		</div>
+	</body>
+	<footer>		
+	</footer>
+</template>
