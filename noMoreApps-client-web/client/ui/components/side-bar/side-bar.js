@@ -1,19 +1,19 @@
 Template.sideBar.rendered = function(){
     openLoading();
-    Meteor.call('getApps',function(error, response) {
+    Meteor.call('allBots',function(error, bots) {
         if(error){
-        	closeLoading();
+         closeLoading();
            throw new Meteor.Error(error);
         }
-        Session.set("apps",response.data.apps);
+        Session.set("bots",bots);
         closeLoading();
     });
 }
 
 Template.sideBar.helpers({
-    apps: function(){
-        var apps = Session.get("apps");
-        return apps;
+    bots: function(){
+        var bots = Session.get("bots");
+        return bots;
     }
 });
 

@@ -22,6 +22,7 @@ processForm = function(container,componentInfo){
 
 		if(request){
 			$(mainElement).submit(function(event){
+				event.preventDefault();
 				var payLoad = $(mainElement).serializeArray();
 				openLoading();
 				Meteor.call(

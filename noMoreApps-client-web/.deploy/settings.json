@@ -1,6 +1,3 @@
 {
-	"noMoreAppsApi":{
-		"pathBase":"http://nomoreapps.getsandbox.com/api/1",
-		"getApps":"/apps"
-	}
+
 }

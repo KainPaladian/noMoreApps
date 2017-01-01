@@ -1,7 +1,7 @@
 module.exports = {
   servers: {
     one: {
-      host: 'ec2-35-165-116-78.us-west-2.compute.amazonaws.com',
+      host: '35.165.241.74',
       username: 'ubuntu',
       pem: '../../documents/NoMoreApps.pem'
       // password:
@@ -9,6 +9,9 @@ module.exports = {
     }
   },
 
+  // Install MongoDB on the server. Does not destroy the local MongoDB on future setups
+  "setupMongo": false,
+  
   meteor: {
     name: 'talkabot-admin',
     path: '../',
@@ -16,19 +19,20 @@ module.exports = {
       one: {}
     },
     env: {
+      PORT:3001,
       ROOT_URL: 'http://admin.talkabot.com.br',
-      MONGO_URL: 'mongodb://localhost/meteor'
+      MONGO_URL: 'mongodb://talkabot:talkabot1@ds151068.mlab.com:51068/talkabot'
     },
     dockerImage: 'abernix/meteord:base',
-    deployCheckWaitTime: 60
+    deployCheckWaitTime: 15
   },
-  mongo: {
-    oplog: true,
-    port: 27017,
-    servers: {
-      one: {},
-    },
-  },
+  // mongo: {
+  //   oplog: true,
+  //   port: 27017,
+  //   servers: {
+  //     one: {},
+  //   },
+  // },
   buildOptions: {
       serverOnly: true,
       debug: false,

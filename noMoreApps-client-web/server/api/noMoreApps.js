@@ -20,5 +20,9 @@ Meteor.methods({
 			console.log(e);
 			throw e;
 		}		
+	},
+	allBots : function(){
+		var bots =  Bots.find().fetch();
+		return bots;
 	}
 });

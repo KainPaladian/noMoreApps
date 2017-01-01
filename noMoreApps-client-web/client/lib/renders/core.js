@@ -113,7 +113,7 @@ getUserInfo = function(){
 		var locale = null;
 		var gender = null;
 
-		if(user.services.facebook){
+		if(user.services && user.services.facebook){
 			var facebookInfo = user.services.facebook;
 			name = facebookInfo.name;
 			email = facebookInfo.email;

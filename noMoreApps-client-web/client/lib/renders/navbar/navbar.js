@@ -14,8 +14,7 @@ processNavbar = function(container,componentInfo){
 	var collapseToggle = $("<button type=\"button\"><span class=\"sr-only\">Toggle navigation</span><span class=\"icon-bar\"></span><span class=\"icon-bar\"></span><span class=\"icon-bar\"></span></button>").addClass("navbar-toggle collapsed").attr("data-toggle","collapse").attr("aria-expanded","false");
     
 	var botConnected = getBotConnected();	
-	// nameBotElement.html(botConnected.name);
-	logoBotElement.attr("src",botConnected.logo);
+	logoBotElement.attr("src",botConnected.urlLogo);
 	
 
 	$(mainElement).uniqueId();

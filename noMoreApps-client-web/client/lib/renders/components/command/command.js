@@ -32,7 +32,9 @@ processCommand = function(container,componentInfo){
 
 		if(request){
 			$(mainElement).click(function(event) {
+				event.preventDefault();
 				var mainElement = event.currentTarget;
+				var request = $(mainElement).data("request");
 				if(request){
 					processCommandRequest(request);
 				}
@@ -53,7 +55,6 @@ processCommand = function(container,componentInfo){
 				
 				if(parentContainer.length==0){
 					parentContainer = $(".component-container").first();
-					console.log(parentContainer);
 				}		
 				
 				var modalTarget = $(mainElement).data("target");
@@ -72,6 +73,24 @@ processCommand = function(container,componentInfo){
 }
 
 
-processCommandRequest = function(commandRequestInfo){
-	alert("TODO");
+processCommandRequest = function(request){
+	openLoading();
+	Meteor.call(
+	 	'sendTerminalRequest',
+	 	request.url,
+	 	request.method,
+	 	null,
+	 	getUserInfo(),
+	 	getDeviceInfo(),
+	 	function(error, response) {
+        	if(error){
+        		closeLoading();
+        		throw new Meteor.Error(error);
+        	}
+        	processApiResponse(response.data);
+            closeLoading();
+		}
+	);
+
+    return false;
 }
