@@ -80,7 +80,6 @@ processCommandRequest = function(request){
 	 	request.url,
 	 	request.method,
 	 	null,
-	 	getUserInfo(),
 	 	getDeviceInfo(),
 	 	function(error, response) {
         	if(error){

@@ -103,36 +103,6 @@ createComponentInfo = function(type,options,components){
 	componentInfo.components = components;
 }
 
-getUserInfo = function(){
-	var user = Meteor.user();
-	var userInfo = {};
-	if(user){
-
-		var name = null;
-		var email =null;
-		var locale = null;
-		var gender = null;
-
-		if(user.services && user.services.facebook){
-			var facebookInfo = user.services.facebook;
-			name = facebookInfo.name;
-			email = facebookInfo.email;
-			locale = facebookInfo.locale;
-			gender = facebookInfo.gender;
-		}else{
-			name = user.profile.name;
-			email = user.emails[0].address;
-			locale = navigator.language;
-		}
-		
-		userInfo.name = name;
-		userInfo.email = email;
-		userInfo.locale= locale;
-		userInfo.gender= gender;
-	}
-	return userInfo;
-}
-
 getDeviceInfo = function(){
 	var deviceInfo = {};
 	deviceInfo.type = "web";
@@ -140,5 +110,6 @@ getDeviceInfo = function(){
 	deviceInfo.appName = navigator.appName;
 	deviceInfo.appVersion = navigator.appVersion;
 	deviceInfo.platform = navigator.platform;
+	deviceInfo.locale = navigator.language;
 	return deviceInfo;
 }

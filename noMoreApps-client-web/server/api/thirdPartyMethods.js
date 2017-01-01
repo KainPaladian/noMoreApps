@@ -24,16 +24,18 @@ buildTerminalDefaultRequest = function(messageType,payload,userInfo,deviceInfo){
 }
 
 Meteor.methods({
-	connect : function(appInfo,userInfo,deviceInfo) {
+	connect : function(botInfo,deviceInfo) {
+		var userInfo = getUserInfo(deviceInfo);
 		var options = getDefaultOptions();
 		options.data = buildTerminalDefaultRequest(CONNECT_REQUEST,null,userInfo,deviceInfo);
 		var response = HTTP.call(
 			'POST', 
-			appInfo.urlConnect,
+			botInfo.urlConnect,
 			options);
 		return response;
 	},
-	sendTerminalRequest : function(url,method,payload,userInfo,deviceInfo){
+	sendTerminalRequest : function(url,method,payload,deviceInfo){
+		var userInfo = getUserInfo(deviceInfo);
 		var options = getDefaultOptions();
 		options.data = buildTerminalDefaultRequest(TERMINAL_REQUEST,payload,userInfo,deviceInfo);
 		return HTTP.call(method,url,options);	

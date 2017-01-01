@@ -22,13 +22,13 @@ Template.sideBar.events({
         event.preventDefault();
         openLoading();
         var botElement = $(event.currentTarget);
-        var appInfo = $(botElement).data("app");
-        Meteor.call('connect',appInfo,null,null,function(error, response) {
+        var botInfo = $(botElement).data("app");
+        Meteor.call('connect',botInfo,getDeviceInfo(),function(error, response) {
         	if(error){
         		closeLoading();
         		throw new Meteor.Error(error);
         	}
-            Session.set(BOT_CONNECTED, appInfo);
+            Session.set(BOT_CONNECTED, botInfo);
             processApiResponse(response.data);            
             $(".li-bot").removeClass("active");
             var liBotElement = $(botElement).closest(".li-bot");
