@@ -34,10 +34,11 @@ Meteor.methods({
 			options);
 		return response;
 	},
-	sendTerminalRequest : function(url,method,payload,deviceInfo){
+	sendTerminalRequest : function(botInfo,botEvent,url,httpMethod,payload,deviceInfo){
+		var event = botEvent==null?TERMINAL_REQUEST:botEvent;
 		var userInfo = getUserInfo(deviceInfo);
 		var options = getDefaultOptions();
-		options.data = buildTerminalDefaultRequest(TERMINAL_REQUEST,payload,userInfo,deviceInfo);
-		return HTTP.call(method,url,options);	
+		options.data = buildTerminalDefaultRequest(event,payload,userInfo,deviceInfo);
+		return HTTP.call(httpMethod,url,options);	
 	}
 });

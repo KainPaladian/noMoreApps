@@ -27,6 +27,8 @@ processForm = function(container,componentInfo){
 				openLoading();
 				Meteor.call(
 				 	'sendTerminalRequest',
+				 	getBotConnected(),
+				 	request.event,
 				 	request.url,
 				 	request.method,
 				 	payLoad,

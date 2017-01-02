@@ -77,6 +77,8 @@ processCommandRequest = function(request){
 	openLoading();
 	Meteor.call(
 	 	'sendTerminalRequest',
+	 	getBotConnected(),
+	 	request.event,
 	 	request.url,
 	 	request.method,
 	 	null,

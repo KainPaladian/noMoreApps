@@ -28,7 +28,7 @@ Template.sideBar.events({
         		closeLoading();
         		throw new Meteor.Error(error);
         	}
-            Session.set(BOT_CONNECTED, botInfo);
+            setBotConnected(botInfo);
             processApiResponse(response.data);            
             $(".li-bot").removeClass("active");
             var liBotElement = $(botElement).closest(".li-bot");
