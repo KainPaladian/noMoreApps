@@ -29,5 +29,9 @@ Template.navBar.events({
 	"click #signUp": function(event) {
 	    event.preventDefault();
 	    $('.modal-sign-up').modal('show')
-	}
+	},
+  "click #disconnect": function(event) {
+      event.preventDefault();
+      disconnectBot(getBotConnected());
+  }
 });

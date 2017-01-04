@@ -17,6 +17,10 @@ processImage = function(container,componentInfo){
 		if(horizontalPosition){
 			if(horizontalPosition=="center"){
 				$(imgElement).addClass("center-block");		
+			}else if(horizontalPosition=="left"){
+				$(imgElement).addClass("pull-left");		
+			}else if(horizontalPosition=="right"){
+				$(imgElement).addClass("pull-right");		
 			}
 		}
 	}

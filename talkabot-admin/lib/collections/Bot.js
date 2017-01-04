@@ -15,6 +15,11 @@ Bots.attachSchema(new SimpleSchema({
     label: "URL Connect",
     max: 250
   },
+  urlDisconnect: {
+    type: String,
+    label: "URL Disconnect",
+    max: 250
+  },
   urlLogo: {
     type: String,
     label: "URL Logo",

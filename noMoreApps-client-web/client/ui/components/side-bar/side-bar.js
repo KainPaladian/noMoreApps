@@ -18,23 +18,14 @@ Template.sideBar.helpers({
 });
 
 Template.sideBar.events({
-    "click .app-info": function(event) {
+     "click .app-info": function(event) {
         event.preventDefault();
         openLoading();
         var botElement = $(event.currentTarget);
-        var botInfo = $(botElement).data("app");
-        Meteor.call('connect',botInfo,getDeviceInfo(),function(error, response) {
-        	if(error){
-        		closeLoading();
-        		throw new Meteor.Error(error);
-        	}
-            setBotConnected(botInfo);
-            processApiResponse(response.data);            
-            $(".li-bot").removeClass("active");
-            var liBotElement = $(botElement).closest(".li-bot");
-            liBotElement.addClass("active");
-            closeLoading();
-        });
+        var botInfo = $(botElement).data("botinfo");
+        connectBot(botInfo);
+        var liBotElement = $(botElement).closest(".li-bot");
+        liBotElement.addClass("active");
     }
 });
 

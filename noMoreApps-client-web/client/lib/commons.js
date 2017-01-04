@@ -30,3 +30,54 @@ setBotConnected = function(botInfo){
 	Session.set(BOT_CONNECTED, botInfo);
 }
 
+disconnectBot = function(botInfo){
+	if(botInfo.urlDisconnect){
+		openLoading();
+		$(".li-bot").removeClass("active");
+		Meteor.call('disconnect',
+	      botInfo,
+	      getDeviceInfo(),
+	      function(error, response) {
+	        setBotConnected(null);
+	        if(error){
+				closeLoading();
+				throw new Meteor.Error(error);
+	        }else{
+	        	if(!hasBotConnected()){
+	        		processApiResponse(response.data);
+	        		closeLoading();
+	        	}        	        	
+	        }
+		});
+	}
+}
+
+sendDisconnectBotRequest = function(botInfo){
+	if(botInfo.urlDisconnect){
+		Meteor.call('disconnect',
+	      botInfo,
+	      getDeviceInfo(),
+	      function(error, response) {
+	        if(error){
+				throw new Meteor.Error(error);
+	        }
+		});
+	}
+}
+
+connectBot = function(botInfo){
+	openLoading();
+	Meteor.call('connect',botInfo,getDeviceInfo(),function(error, response) {
+		if(error){
+			closeLoading();
+			throw new Meteor.Error(error);
+		}
+		if(hasBotConnected()){
+			sendDisconnectBotRequest(getBotConnected());			
+		}
+		setBotConnected(botInfo);
+	    processApiResponse(response.data);            
+	    closeLoading();
+		
+	});
+}

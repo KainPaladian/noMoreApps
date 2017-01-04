@@ -2,6 +2,9 @@ processApiResponse = function(apiResponse) {
 	if(apiResponse.type==CONNECT_RESPONSE){
 		processTypeConnectResponse(apiResponse);
 	}
+	if(apiResponse.type==DISCONNECT_RESPONSE){
+		processTypeDisconnectResponse(apiResponse);
+	}
 	if(apiResponse.type==API_RESPONSE){
 		processTypeAPIResponse(apiResponse);
 	}
@@ -20,6 +23,12 @@ processTypeAPIResponse = function(apiResponse) {
 }
 
 processTypeConnectResponse = function(apiResponse) {
+	getRenderContainer().empty();
+	processAppearance(getRenderContainer(),apiResponse);
+	processLayout(getRenderContainer(),apiResponse);
+}
+
+processTypeDisconnectResponse = function(apiResponse) {
 	getRenderContainer().empty();
 	processAppearance(getRenderContainer(),apiResponse);
 	processLayout(getRenderContainer(),apiResponse);
