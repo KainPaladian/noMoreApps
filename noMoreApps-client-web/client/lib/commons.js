@@ -30,10 +30,14 @@ setBotConnected = function(botInfo){
 	Session.set(BOT_CONNECTED, botInfo);
 }
 
+clearBotConnectedSelection = function(){
+	$(".li-bot").removeClass("active");
+}
+
 disconnectBot = function(botInfo){
 	if(botInfo.urlDisconnect){
+		clearBotConnectedSelection();
 		openLoading();
-		$(".li-bot").removeClass("active");
 		Meteor.call('disconnect',
 	      botInfo,
 	      getDeviceInfo(),
@@ -53,6 +57,7 @@ disconnectBot = function(botInfo){
 }
 
 sendDisconnectBotRequest = function(botInfo){
+	clearBotConnectedSelection();
 	if(botInfo.urlDisconnect){
 		Meteor.call('disconnect',
 	      botInfo,
@@ -67,17 +72,16 @@ sendDisconnectBotRequest = function(botInfo){
 
 connectBot = function(botInfo){
 	openLoading();
+	if(hasBotConnected()){
+		sendDisconnectBotRequest(getBotConnected());			
+	}
 	Meteor.call('connect',botInfo,getDeviceInfo(),function(error, response) {
 		if(error){
 			closeLoading();
 			throw new Meteor.Error(error);
 		}
-		if(hasBotConnected()){
-			sendDisconnectBotRequest(getBotConnected());			
-		}
 		setBotConnected(botInfo);
 	    processApiResponse(response.data);            
 	    closeLoading();
-		
 	});
 }

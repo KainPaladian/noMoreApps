@@ -23,7 +23,7 @@ processForm = function(container,componentInfo){
 		if(request){
 			$(mainElement).submit(function(event){
 				event.preventDefault();
-				var payLoad = $(mainElement).serializeArray();
+				var parameters = $(mainElement).serializeArray();
 				openLoading();
 				Meteor.call(
 				 	'sendTerminalRequest',
@@ -31,7 +31,7 @@ processForm = function(container,componentInfo){
 				 	request.event,
 				 	request.url,
 				 	request.method,
-				 	payLoad,
+				 	parameters,
 				 	getDeviceInfo(),
 				 	function(error, response) {
 			        	if(error){

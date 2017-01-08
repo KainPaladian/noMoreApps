@@ -22,7 +22,7 @@ Template.sideBar.events({
         event.preventDefault();
         openLoading();
         var botElement = $(event.currentTarget);
-        var botInfo = $(botElement).data("botinfo");
+        var botInfo = $(botElement).data("bot-info");
         connectBot(botInfo);
         var liBotElement = $(botElement).closest(".li-bot");
         liBotElement.addClass("active");
