@@ -45,10 +45,15 @@ Meteor.methods({
 		return response;
 	},
 	sendTerminalRequest : function(botInfo,botEvent,url,httpMethod,parameters,deviceInfo){
+		console.log(url);
 		var event = botEvent==null?TERMINAL_REQUEST:botEvent;
 		var userInfo = getUserInfo(deviceInfo);
 		var options = getDefaultOptions();
-		options.data = buildTerminalDefaultRequest(event,parameters,userInfo,deviceInfo);
+		if(httpMethod=="POST" || httpMethod=="PUT") {
+			options.data = buildTerminalDefaultRequest(event,parameters,userInfo,deviceInfo);
+		} else if(httpMethod=="GET") {
+			options.params = JSON.stringify(buildTerminalDefaultRequest(event,parameters,userInfo,deviceInfo));
+		}
 		return HTTP.call(httpMethod,url,options);	
 	}
 });

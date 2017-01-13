@@ -42,7 +42,6 @@ processForm = function(container,componentInfo){
 			            closeLoading();
        				}
        			);
-
 			    return false;
 			});
 		}

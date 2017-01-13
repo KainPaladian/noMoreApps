@@ -6,7 +6,6 @@ processText = function(container,componentInfo){
 		var value = options.value;
 		var richText = options.richText
 		if(richText){	
-			console.log("passou");
 			$(mainElement).append($.parseHTML(value));
 		}else{
 			$(mainElement).text(value).addClass("lead");
