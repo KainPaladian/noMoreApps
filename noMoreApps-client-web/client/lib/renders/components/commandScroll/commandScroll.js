@@ -1,14 +1,14 @@
 processCommandScroll = function(container,componentInfo){
 	var options = componentInfo.options;
-	var mainElement = $("<div></div>").addClass("component-command-scroll");
-	var buttonElement = $("<button></button>").addClass("component-command-scroll btn btn-default");
-	var loadingElement = $("<img src='/loading.svg'></img>").addClass("component-command-scroll-loading");
+	var mainElement = $("<div></div>").addClass("component-command-scroll center-block");
+	var buttonElement = $("<button></button>").addClass("component-command-scroll-btn btn btn-default btn-lg center-block ");
+	var loadingElement = $("<img src='/loading.svg'></img>").addClass("component-command-scroll-loading center-block hidden");
 	
 	$(mainElement).uniqueId();
+	$(mainElement).attr("data-parent-component",$(container).attr("id"));
+
 	$(buttonElement).uniqueId();
 	$(loadingElement).uniqueId();
-
-	$(loadingElement).addClass("hide-loading");
 
 	$(mainElement).append(buttonElement);
 	$(mainElement).append(loadingElement);
@@ -20,7 +20,7 @@ processCommandScroll = function(container,componentInfo){
 		var type = options.type;
 
 		if(type=="link"){
-			buttonElement = $("<a href=\"#\"></a>").addClass("component-command-scroll");
+			buttonElement = $("<a href=\"#\"></a>").addClass("component-command-scroll-btn center-block");
 			$(buttonElement).uniqueId();
 		}
 
@@ -36,16 +36,17 @@ processCommandScroll = function(container,componentInfo){
 			$(mainElement).click(function(event) {
 				event.preventDefault();
 				var mainElement = event.currentTarget;
-				var buttonElement = $(event.currentTarget).find(".component-command-scroll");
-				var loadingElement = $(event.currentTarget).find(".component-command-scroll-hide-loading");
-				$(loadingElement).addClass("component-command-scroll-loading");
+				var buttonElement = $(event.currentTarget).find(".component-command-scroll-btn");
+				var loadingElement = $(event.currentTarget).find(".component-command-scroll-loading");
+				$(loadingElement).removeClass("hidden");
+				$(buttonElement).addClass("hidden");
 				var request = $(mainElement).data("request");
 				var page = $(mainElement).attr("data-page");
 				page = parseInt(page)+1;
 				$(mainElement).attr("data-page",page);
 				var parameters = {};
 				parameters.page=page;
-				processCommandScrollRequest(mainElement,request,parameters);
+				processCommandScrollRequest(mainElement,request,parameters,mainElement,buttonElement,loadingElement);
 			});
 		}
 	}
@@ -53,10 +54,11 @@ processCommandScroll = function(container,componentInfo){
 	return mainElement;
 }
 
-processCommandScrollRequest = function(commandScroll,request,parameters){
+processCommandScrollRequest = function(commandScroll,request,parameters,mainElement,buttonElement,loadingElement){
+	var container = $("#"+$(mainElement).attr("data-parent-component"));
 	var options = {};
 	options.clearContainer = false;
-	options.preprende = true;
+	options.renderContainer = container ;
 	Meteor.call(
 	 	'sendTerminalRequest',
 	 	getBotConnected(),
@@ -70,6 +72,9 @@ processCommandScrollRequest = function(commandScroll,request,parameters){
         		throw new Meteor.Error(error);
         	}
         	processApiResponse(response.data,options);
+        	$(container).append(mainElement);
+        	$(loadingElement).addClass("hidden");
+        	$(buttonElement).removeClass("hidden");
 		}
 	);
 

@@ -11,17 +11,20 @@ processApiResponse = function(apiResponse,options) {
 }
 
 processTypeAPIResponse = function(apiResponse,options) {
+	var renderContainer = null;
 	var clearContainer = true;
 
 	if(options){
 		clearContainer = options.clearContainer;
+		renderContainer = options.renderContainer;
 	}
 
-	var renderContainer = null;
-	if(hasBotConnected()){
-		renderContainer = $(".component-container").first();
-	}else{
-		renderContainer = getRenderContainer();
+	if(renderContainer==null){
+		if(hasBotConnected()){
+			renderContainer = $(".component-container").first();
+		}else{
+			renderContainer = getRenderContainer();
+		}
 	}
 
 	if(clearContainer){

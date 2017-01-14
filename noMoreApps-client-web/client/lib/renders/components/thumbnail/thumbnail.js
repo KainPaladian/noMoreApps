@@ -23,6 +23,7 @@ processThumbnail = function(container,componentInfo){
 			var imageElement = processComponent(thumbnailElement,image);
 			$(thumbnailElement).prepend(imageElement);
 			$(imageElement).uniqueId();
+			$(imageElement).addClass("center-block");
 		}
 
 		if(caption){
