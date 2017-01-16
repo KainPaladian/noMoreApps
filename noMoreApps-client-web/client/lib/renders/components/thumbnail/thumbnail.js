@@ -37,7 +37,6 @@ processThumbnail = function(container,componentInfo){
 			}
 
 			if(captionComponents){
-
 				$(captionComponents).each(function(index,captionComponentInfo){
 		            processComponent(captionElement,captionComponentInfo);
 				});

@@ -1,6 +1,17 @@
 .component-container {
 
 }
+
+.component-container-body > * {
+	margin: 10px;
+}
+
 .component-container-title {
 	
 }
+
+.component-container-clear {
+	clear: both;	
+}
+
+
