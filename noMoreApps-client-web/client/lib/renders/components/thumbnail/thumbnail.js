@@ -16,14 +16,14 @@ processThumbnail = function(container,componentInfo){
 	$(captionElement).uniqueId();
 	
 	if(options){
-		var image = options.image;
+		var header = options.header;
 		var caption = options.caption;
 
-		if(image){
-			var imageElement = processComponent(thumbnailElement,image);
-			$(thumbnailElement).prepend(imageElement);
-			$(imageElement).uniqueId();
-			$(imageElement).addClass("center-block");
+		if(header){
+			var headerElement = processComponent(thumbnailElement,header);
+			$(thumbnailElement).prepend(headerElement);
+			$(headerElement).uniqueId();
+			$(headerElement).addClass("center-block");
 		}
 
 		if(caption){

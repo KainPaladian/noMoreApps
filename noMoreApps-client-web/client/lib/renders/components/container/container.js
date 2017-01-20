@@ -1,7 +1,7 @@
 processContainer = function(container,componentInfo){
 	var options = componentInfo.options;
 	var components = componentInfo.components;
-	var scroll = null;
+	var feedConfig = null;
 	var floatElements = null;
 	var mainElement = $("<div></div>").addClass("component-container"); 
 
@@ -10,7 +10,7 @@ processContainer = function(container,componentInfo){
 	if(options){
 		var title = options.title;
 		var layoutRender = options.layoutRender;
-		scroll = options.commandScroll;
+		feedConfig = options.feed;
 		floatElements = options.floatElements;
 		if(title){
 			
@@ -38,15 +38,18 @@ processContainer = function(container,componentInfo){
 			var clearElement = $("<div></div>").addClass("component-container-clear");
 			$(mainElement).append(clearElement);
 			$(components).each(function(index,componentInfo){
-				processComponent(bodyElement,componentInfo);
+				var floatElement = $("<div></div>").addClass("component-container-float-element");
+				$(floatElement).uniqueId();
+				$(bodyElement).append(floatElement);
+				processComponent(floatElement,componentInfo);
 			});
 		}else{
 			processComponents(bodyElement,componentInfo.components);	
 		}	
 	}
 
-	if(scroll){
-		processComponent(bodyElement,scroll);
+	if(feedConfig){
+		processComponent(bodyElement,feedConfig);
 	}
 
 	return mainElement;

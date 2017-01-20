@@ -28,6 +28,7 @@ Meteor.methods({
 		var userInfo = getUserInfo(deviceInfo);
 		var options = getDefaultOptions();
 		options.data = buildTerminalDefaultRequest(CONNECT_REQUEST,null,userInfo,deviceInfo);
+		console.log("Send POST to "+botInfo.urlConnect);
 		var response = HTTP.call(
 			'POST', 
 			botInfo.urlConnect,

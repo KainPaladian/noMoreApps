@@ -17,12 +17,6 @@ processCommandScroll = function(container,componentInfo){
 		
 		var value = options.value;
 		var request = options.request;
-		var type = options.type;
-
-		if(type=="link"){
-			buttonElement = $("<a href=\"#\"></a>").addClass("component-command-scroll-btn center-block");
-			$(buttonElement).uniqueId();
-		}
 
 		if(value){
 			$(buttonElement).html(value);
@@ -77,6 +71,4 @@ processCommandScrollRequest = function(commandScroll,request,parameters,mainElem
         	$(buttonElement).removeClass("hidden");
 		}
 	);
-
-    return false;
 }

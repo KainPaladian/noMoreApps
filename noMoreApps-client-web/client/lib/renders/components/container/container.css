@@ -2,8 +2,9 @@
 
 }
 
-.component-container-body > * {
+.component-container-body > *:not(.component-command-scroll) {
 	margin: 10px;
+	float: left;	
 }
 
 .component-container-title {
@@ -12,6 +13,10 @@
 
 .component-container-clear {
 	clear: both;	
+}
+
+.component-container-float-element {
+	float: left;	
 }
 
 
