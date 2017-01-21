@@ -85,3 +85,7 @@ connectBot = function(botInfo){
 	    closeLoading();
 	});
 }
+
+scrollDown = function(delay){
+	$("html, body").animate({ scrollTop: $(document).height() }, delay);
+}

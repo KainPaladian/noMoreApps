@@ -2,7 +2,7 @@
 
 }
 
-.component-container-body > *:not(.component-command-scroll) {
+.component-container-body > *:not(.component-pagination) {
 	margin: 10px;
 	float: left;	
 }

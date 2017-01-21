@@ -9,8 +9,8 @@ processCommand = function(container,componentInfo){
 		var value = options.value;
 		var request = options.request;
 		var type = options.type;
-		var content = options.content;
-		var modalInfo = options.modal;
+		var content = options.innerRenderComponents;
+		var modalInfo = options.modalComponent;
 		var modalElement = null;
 
 		if(type=="link"){

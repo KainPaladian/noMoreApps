@@ -4,20 +4,17 @@ processThumbnail = function(container,componentInfo){
 	var mainElement = $("<div></div>").addClass("component-thumbnail"); 
 	var secondElement = $("<div></div>");
 	var thumbnailElement = $("<div></div>").addClass("thumbnail");
-	var captionElement = $("<div></div>").addClass("caption text-center");
 
 	$(mainElement).append(secondElement);
 	$(secondElement).append(thumbnailElement);
-	$(thumbnailElement).append(captionElement);
 	
 	$(mainElement).uniqueId();
 	$(secondElement).uniqueId();
-	$(thumbnailElement).uniqueId();
-	$(captionElement).uniqueId();
+	$(thumbnailElement).uniqueId();	
 	
 	if(options){
-		var header = options.header;
-		var caption = options.caption;
+		var header = options.headerComponent;
+		var caption = options.captionComponent;
 
 		if(header){
 			var headerElement = processComponent(thumbnailElement,header);
@@ -29,6 +26,10 @@ processThumbnail = function(container,componentInfo){
 		if(caption){
 			var title = caption.title;
 			var captionComponents = caption.components;
+
+			var captionElement = $("<div></div>").addClass("caption text-center");
+			$(captionElement).uniqueId();
+			$(thumbnailElement).append(captionElement);
 			
 			if(title){
 				var titleCaptionElement = $("<h3></h3>").html(title);

@@ -100,8 +100,8 @@ processComponent = function(container,componentInfo,options){
 	if(componentInfo.type==COMPONENT_TYPE_NAVBAR){
 		component = processNavbar(container,componentInfo);
 	}
-	if(componentInfo.type==COMPONENT_TYPE_COMMAND_SCROLL){
-		component = processCommandScroll(container,componentInfo);
+	if(componentInfo.type==COMPONENT_TYPE_PAGINATION){
+		component = processPagination(container,componentInfo);
 	}
 	if(options && options.prepend){
 		$(container).prepend(component);	

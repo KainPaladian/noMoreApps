@@ -8,7 +8,7 @@ processNavbar = function(container,componentInfo){
 	var nameBotElement = $("<span></span>").addClass("component-navbar-name-bot");
 	var logoBotElement = $("<img></img>").addClass("app-logo-min");
 
-	var collapseElement = $("<div></div>").addClass("component-navbar-collapse collapse-navbar collapse in");
+	var collapseElement = $("<div></div>").addClass("component-navbar-collapse collapse-navbar collapse");
 	var collapseUlElement = $("<ul></ul>").addClass("component-navbar-collapse-ul nav navbar-nav navbar-left");
 	
 	var collapseToggle = $("<button type=\"button\"><span class=\"sr-only\">Toggle navigation</span><span class=\"icon-bar\"></span><span class=\"icon-bar\"></span><span class=\"icon-bar\"></span></button>").addClass("navbar-toggle collapsed").attr("data-toggle","collapse").attr("aria-expanded","false");
@@ -39,6 +39,11 @@ processNavbar = function(container,componentInfo){
 	
 	$(collapseToggle).attr("data-target","#"+$(collapseElement).attr("id"));
 	if(options){
+		var startOpened = options.startOpened;
+		if(startOpened==true)
+		{
+			$(collapseElement).addClass("in");
+		}
 	}
 	
 	if(components){

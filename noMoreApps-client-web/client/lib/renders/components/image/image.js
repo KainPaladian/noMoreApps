@@ -10,6 +10,8 @@ processImage = function(container,componentInfo){
 	
 	if(options){
 		var src = options.src;
+		var width = options.width;
+		var height = options.height;
 		var horizontalPosition = options.horizontalPosition;
 		if(src){
 			$(imgElement).attr("src",src);
@@ -22,6 +24,15 @@ processImage = function(container,componentInfo){
 			}else if(horizontalPosition=="right"){
 				$(imgElement).addClass("pull-right");		
 			}
+		}
+		if(width){
+			$(imgElement).attr("width",width);
+		}
+		if(height){
+			$(imgElement).attr("height",height);
+		}
+		if(width || height){
+			$(imgElement).removeClass("img-responsive");
 		}
 	}
 	var loadingInfo = {type:"LOADING"};

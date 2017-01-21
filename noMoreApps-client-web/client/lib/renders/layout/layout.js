@@ -11,13 +11,13 @@ processLayout = function(container,apiResponse){
 
 processLayoutDefault = function(container,layoutInfo){
 
-	var innerContainerInfo = layoutInfo.container;
+	var innerContainerInfo = layoutInfo.containerComponent;
 
 	innerContainerInfo.options.layoutRender = true;
 	
 	processComponent(container,innerContainerInfo);
 
-	if(layoutInfo.navbar){
-		processComponent(getRenderContainer(),layoutInfo.navbar);
+	if(layoutInfo.navbarComponent){
+		processComponent(getRenderContainer(),layoutInfo.navbarComponent);
 	}	
 }

@@ -10,7 +10,7 @@ processContainer = function(container,componentInfo){
 	if(options){
 		var title = options.title;
 		var layoutRender = options.layoutRender;
-		feedConfig = options.feed;
+		feedConfig = options.paginationComponent;
 		floatElements = options.floatElements;
 		if(title){
 			
@@ -38,10 +38,7 @@ processContainer = function(container,componentInfo){
 			var clearElement = $("<div></div>").addClass("component-container-clear");
 			$(mainElement).append(clearElement);
 			$(components).each(function(index,componentInfo){
-				var floatElement = $("<div></div>").addClass("component-container-float-element");
-				$(floatElement).uniqueId();
-				$(bodyElement).append(floatElement);
-				processComponent(floatElement,componentInfo);
+				processComponent(bodyElement,componentInfo);
 			});
 		}else{
 			processComponents(bodyElement,componentInfo.components);	
