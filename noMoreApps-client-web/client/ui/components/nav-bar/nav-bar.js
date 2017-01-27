@@ -1,8 +1,8 @@
 Template.navBar.helpers({
   userName: function() {
   	if(Meteor.user()){
-    	return Meteor.user().profile.name
-	}
+      return Meteor.user().profile.name
+	  }
   },
   userEmail: function() {
   	if(Meteor.user().emails){

@@ -27,14 +27,14 @@ processTypeAPIResponse = function(apiResponse,options) {
 		}
 	}
 
-	if(clearContainer){
+	if(clearContainer==true){
 		renderContainer.empty();	
 	}
 	
 	if(apiResponse.body.layout){
 		processLayout(renderContainer,apiResponse,options);	
-	}else if(apiResponse.body.container){
-		processComponent(renderContainer,apiResponse.body.container,options);
+	}else if(apiResponse.body.containerComponent){
+		processComponent(renderContainer,apiResponse.body.containerComponent,options);
 	}else if(apiResponse.body.components){
 		processComponents(renderContainer,apiResponse.body.components,options);
 	}
@@ -102,6 +102,9 @@ processComponent = function(container,componentInfo,options){
 	}
 	if(componentInfo.type==COMPONENT_TYPE_PAGINATION){
 		component = processPagination(container,componentInfo);
+	}
+	if(componentInfo.type==COMPONENT_TYPE_COMBOBOX){
+		component = processComboBox(container,componentInfo);
 	}
 	if(options && options.prepend){
 		$(container).prepend(component);	

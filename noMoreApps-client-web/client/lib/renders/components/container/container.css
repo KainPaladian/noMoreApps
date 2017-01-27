@@ -2,9 +2,12 @@
 
 }
 
-.component-container-body > *:not(.component-pagination) {
+.component-container-body {
 	margin: 10px;
-	float: left;	
+}
+
+.component-container-float > *:not(.component-pagination) {
+	float: left;
 }
 
 .component-container-title {
@@ -14,9 +17,3 @@
 .component-container-clear {
 	clear: both;	
 }
-
-.component-container-float-element {
-	float: left;	
-}
-
-

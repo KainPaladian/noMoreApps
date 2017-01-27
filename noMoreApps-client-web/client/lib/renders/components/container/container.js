@@ -9,9 +9,11 @@ processContainer = function(container,componentInfo){
 	
 	if(options){
 		var title = options.title;
+		var titleHorizontalPosition = options.titleHorizontalPosition;
 		var layoutRender = options.layoutRender;
 		feedConfig = options.paginationComponent;
 		floatElements = options.floatElements;
+
 		if(title){
 			
 			var headerElement = $("<div></div>").addClass("component-container-header");
@@ -21,10 +23,16 @@ processContainer = function(container,componentInfo){
 			$(titleElement).uniqueId();
 
 			$(headerElement).append(titleElement);
-			$(mainElement).append(titleElement);
+			$(mainElement).append(headerElement);
+
+			if(titleHorizontalPosition){
+				if(titleHorizontalPosition=="center"){
+					$(headerElement).addClass("text-center");	
+				}				
+			}
 		}
 		if(layoutRender==true){
-			$(mainElement).addClass("layout-render");
+			$(mainElement).addClass("region-render");
 		}
 	}
 
@@ -35,6 +43,7 @@ processContainer = function(container,componentInfo){
 
 	if(components){
 		if(floatElements){
+			$(bodyElement).addClass("component-container-float");
 			var clearElement = $("<div></div>").addClass("component-container-clear");
 			$(mainElement).append(clearElement);
 			$(components).each(function(index,componentInfo){

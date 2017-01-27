@@ -1,17 +1,17 @@
 processNavbar = function(container,componentInfo){
 	var options = componentInfo.options;
 	var components = componentInfo.components;
-	var mainElement = $("<nav></nav>").addClass("component-navbar navbar navbar-default navbar-fixed-bottom isModified");
+	var mainElement = $("<nav></nav>").addClass("component-navbar navbar navbar-default navbar-fixed-bottom isModified region-render");
 	var containerFluidElement = $("<div></div>").addClass("container-fluid");
 	var headerElement = $("<div></div>").addClass("navbar-header");
-	var navbarBrandElement = $("<a href=\"#\"></a>").addClass("navbar-brand");
+	var navbarBrandElement = $("<a href=\"#\"></a>").addClass("navbar-brand img-rounded");
 	var nameBotElement = $("<span></span>").addClass("component-navbar-name-bot");
 	var logoBotElement = $("<img></img>").addClass("app-logo-min");
 
-	var collapseElement = $("<div></div>").addClass("component-navbar-collapse collapse-navbar collapse");
+	var collapseElement = $("<div></div>").addClass("component-navbar-collapse in");
 	var collapseUlElement = $("<ul></ul>").addClass("component-navbar-collapse-ul nav navbar-nav navbar-left");
 	
-	var collapseToggle = $("<button type=\"button\"><span class=\"sr-only\">Toggle navigation</span><span class=\"icon-bar\"></span><span class=\"icon-bar\"></span><span class=\"icon-bar\"></span></button>").addClass("navbar-toggle collapsed").attr("data-toggle","collapse").attr("aria-expanded","false");
+	var collapseToggle = $("<button type=\"button\"><span class=\"sr-only\">Toggle navigation</span><span class=\"icon-bar\"></span><span class=\"icon-bar\"></span><span class=\"icon-bar\"></span></button>").addClass("navbar-toggle").attr("data-toggle","collapse").attr("aria-expanded","false");
     
 	var botConnected = getBotConnected();	
 	logoBotElement.attr("src",botConnected.urlLogo);
@@ -42,7 +42,7 @@ processNavbar = function(container,componentInfo){
 		var startOpened = options.startOpened;
 		if(startOpened==true)
 		{
-			$(collapseElement).addClass("in");
+			
 		}
 	}
 	

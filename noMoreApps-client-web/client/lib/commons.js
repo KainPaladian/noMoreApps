@@ -2,7 +2,12 @@ openLoading = function () {
     $("#loading").css('display','block');
 }
 
+closeModal = function () {
+	$(".modal").modal("hide");   
+}
+
 closeLoading = function () {
+	$(".modal").modal("hide");
     $("#loading").css('display','none');
 }
 

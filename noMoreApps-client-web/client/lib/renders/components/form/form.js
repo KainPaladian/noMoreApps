@@ -24,6 +24,7 @@ processForm = function(container,componentInfo){
 			$(mainElement).submit(function(event){
 				event.preventDefault();
 				var parameters = $(mainElement).serializeArray();
+				closeModal();
 				openLoading();
 				Meteor.call(
 				 	'sendTerminalRequest',
