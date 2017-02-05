@@ -9,7 +9,7 @@ processCommand = function(container,componentInfo){
 		var value = options.value;
 		var request = options.request;
 		var type = options.type;
-		var content = options.innerRenderComponents;
+		var innerComponents = options.innerComponents;
 		var modalInfo = options.modalComponent;
 		var modalElement = null;
 
@@ -18,8 +18,8 @@ processCommand = function(container,componentInfo){
 			$(mainElement).uniqueId();
 		}
 
-		if(content){
-			processComponents(mainElement,content);
+		if(innerComponents){
+			processComponents(mainElement,innerComponents);
 		}
 
 		if(value){

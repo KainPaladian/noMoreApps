@@ -1,50 +1,52 @@
 processThumbnail = function(container,componentInfo){
+
 	var options = componentInfo.options;
-	
+
 	var mainElement = $("<div></div>").addClass("component-thumbnail"); 
-	var secondElement = $("<div></div>");
 	var thumbnailElement = $("<div></div>").addClass("thumbnail");
 
-	$(mainElement).append(secondElement);
-	$(secondElement).append(thumbnailElement);
-	
-	$(mainElement).uniqueId();
-	$(secondElement).uniqueId();
+	var headerMainElement = $("<div></div>");
+	var captionMainElement = $("<div></div>").addClass("caption");
+
+	$(mainElement).append(thumbnailElement);
+
+	$(mainElement).uniqueId();	
 	$(thumbnailElement).uniqueId();	
 	
-	if(options){
-		var header = options.headerComponent;
-		var caption = options.captionComponent;
 
-		if(header){
-			var headerElement = processComponent(thumbnailElement,header);
-			$(thumbnailElement).prepend(headerElement);
+	
+	if(options){
+
+		var headerComponent = options.headerComponent;
+		var captionComponents = options.captionComponents;
+
+		var maxWidth = options.maxWidth;
+
+		if(maxWidth){
+			$(mainElement).css("max-width",maxWidth);
+		}
+
+		if(headerComponent){
+			
+			$(thumbnailElement).append(headerMainElement);
+			$(headerMainElement).uniqueId();
+
+			var headerComponents = headerComponent.components;
+			var headerElement = processComponent(headerMainElement,headerComponent,{insertMode:'prepend'});
 			$(headerElement).uniqueId();
 			$(headerElement).addClass("center-block");
 		}
 
-		if(caption){
-			var title = caption.title;
-			var captionComponents = caption.components;
-
-			var captionElement = $("<div></div>").addClass("caption text-center");
-			$(captionElement).uniqueId();
-			$(thumbnailElement).append(captionElement);
+		if(captionComponents){
 			
-			if(title){
-				var titleCaptionElement = $("<h3></h3>").html(title);
-				$(captionElement).append(titleCaptionElement);
-				$(titleCaptionElement).uniqueId();
-			}
+			$(thumbnailElement).append(captionMainElement);
+			$(captionMainElement).uniqueId();
 
-			if(captionComponents){
-				$(captionComponents).each(function(index,captionComponentInfo){
-		            processComponent(captionElement,captionComponentInfo);
-				});
-			}
+			processComponents(captionMainElement,captionComponents);
 		}
 	}
 
 	processComponents(mainElement,componentInfo.components);
+
 	return mainElement;
 }

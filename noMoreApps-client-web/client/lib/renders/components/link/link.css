@@ -1,0 +1,23 @@
+.component-link-link {
+
+}
+
+.component-link-link a:link {
+    text-decoration: underline;
+}
+
+.component-link-link a:visited {
+    text-decoration: underline;
+}
+
+.component-link-link a:hover {
+    text-decoration: underline;
+}
+
+.component-link-link a:active {
+    text-decoration: underline;
+}
+
+.component-link-link > .component-link-float{
+	float: left;
+}

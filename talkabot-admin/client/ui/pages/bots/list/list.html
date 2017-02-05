@@ -9,20 +9,17 @@
 			<caption></caption>
 			<thead>
 				<tr>
-					<th>Name</th>
-					<th>Description</th>
-					<th>URL Connection</th>
 					<th>Logo</th>
+					<th>Name</th>
+					<th>Description</th>					
 				</tr>				
 			</thead>
 			<tbody>
 				{{#each bots}}
 					<tr id={{_id}} class="selectedBot">
-						<td>{{name}}</td>
-						<td>{{description}}</td>
-						<td>{{urlConnect}}</td>
-						<td>{{urlDisconnect}}</td>
 						<td><img src={{urlLogo}} class="bot-logo-min"/></td>
+						<td>{{name}}</td>
+						<td>{{description}}</td>						
 					</tr>			
 				{{/each}}
 			</tbody>

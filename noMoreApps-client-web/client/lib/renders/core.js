@@ -1,12 +1,23 @@
 processApiResponse = function(apiResponse,options) {
-	if(apiResponse.type==CONNECT_RESPONSE){
-		processTypeConnectResponse(apiResponse,options);
-	}
-	if(apiResponse.type==DISCONNECT_RESPONSE){
-		processTypeDisconnectResponse(apiResponse,options);
-	}
-	if(apiResponse.type==API_RESPONSE){
-		processTypeAPIResponse(apiResponse,options);
+	if(getBotConnected().requiredAuthentication && Meteor.user()==null){
+		var renderContainer = null;
+		if(hasBotConnected()){
+			renderContainer = $(".component-container").first();
+		}else{
+			renderContainer = getRenderContainer();
+		}
+		$(renderContainer).empty();
+		FlowRouter.go("/login");
+	}else{
+		if(apiResponse.type==CONNECT_RESPONSE){
+			processTypeConnectResponse(apiResponse,options);
+		}
+		if(apiResponse.type==DISCONNECT_RESPONSE){
+			processTypeDisconnectResponse(apiResponse,options);
+		}
+		if(apiResponse.type==API_RESPONSE){
+			processTypeAPIResponse(apiResponse,options);
+		}
 	}
 }
 
@@ -28,7 +39,7 @@ processTypeAPIResponse = function(apiResponse,options) {
 	}
 
 	if(clearContainer==true){
-		renderContainer.empty();	
+		renderContainer.empty();
 	}
 	
 	if(apiResponse.body.layout){
@@ -106,8 +117,18 @@ processComponent = function(container,componentInfo,options){
 	if(componentInfo.type==COMPONENT_TYPE_COMBOBOX){
 		component = processComboBox(container,componentInfo);
 	}
-	if(options && options.prepend){
-		$(container).prepend(component);	
+	if(componentInfo.type==COMPONENT_TYPE_LINK){
+		component = processLink(container,componentInfo);
+	}
+	if(options){
+		if(options.insertMode=='prepend'){
+			$(container).prepend(component);	
+		}else if(options.insertMode=='append'){
+			$(container).append(component);
+		}else if(options.insertMode=='html'){
+			var html = $(container).html();
+			$(container).html(html+component);
+		}		
 	}else{
 		$(container).append(component);	
 	}

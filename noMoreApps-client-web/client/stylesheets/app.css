@@ -37,3 +37,7 @@ footer {
 		min-height: 100%;
 	}	
 }
+
+.component-clear{
+	clear: both;
+}

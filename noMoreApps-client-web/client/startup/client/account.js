@@ -44,10 +44,11 @@ AccountsTemplates.addFields([
 ]);
 
 Accounts.onLogin(function(user){
- $('.modal-sign-in').modal('hide')
-});
-
-Accounts.onLogin(function(user){
-  $('.modal-sign-up').modal('hide')
+ $('.modal-sign-in').modal('hide');
+ $('.modal-sign-up').modal('hide');
+ if(hasBotConnected()){
+    var botInfo = getBotConnected();
+    connectBot(botInfo);
+ }
 });
 

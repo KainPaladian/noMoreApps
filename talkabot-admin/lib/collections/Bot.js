@@ -24,6 +24,10 @@ Bots.attachSchema(new SimpleSchema({
     type: String,
     label: "URL Logo",
     max: 250
+  },
+  requiredAuthentication: {
+    type: Boolean,
+    label: "Required Authentication "
   }
 }));
 Bots.allow({

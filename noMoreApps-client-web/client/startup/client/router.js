@@ -5,15 +5,19 @@ FlowRouter.route('/', {
     }
 });
 
-// AccountsTemplates.configureRoute('signIn', {
-//   name: 'login',
-//   path: '/login',
-//   template: 'login',
-//   layoutTemplate: 'layout',
-//   layoutRegions: {},
-//   contentRegion: 'main',
-//   redirect: '/'
-// });
+FlowRouter.route('/signup', {
+    name: "signup",
+    action: function(params) {
+        BlazeLayout.render('layout',{main: "signup"});
+    }
+});
+
+FlowRouter.route('/login', {
+    name: "login",
+    action: function(params) {
+        BlazeLayout.render('layout',{main: "login"});
+    }
+});
 
 // AccountsTemplates.configureRoute('signUp', {
 //   name: 'signup',

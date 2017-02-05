@@ -11,8 +11,9 @@ processContainer = function(container,componentInfo){
 		var title = options.title;
 		var titleHorizontalPosition = options.titleHorizontalPosition;
 		var layoutRender = options.layoutRender;
-		feedConfig = options.paginationComponent;
-		floatElements = options.floatElements;
+		var feedConfig = options.paginationComponent;
+		var floatElements = options.floatElements;
+		var margin = options.margin;
 
 		if(title){
 			
@@ -56,6 +57,10 @@ processContainer = function(container,componentInfo){
 
 	if(feedConfig){
 		processComponent(bodyElement,feedConfig);
+	}
+
+	if(margin){
+		$(mainElement).css("margin",margin);
 	}
 
 	return mainElement;

@@ -1,14 +1,25 @@
 processText = function(container,componentInfo){
 	var options = componentInfo.options;
-	var mainElement = $("<p></p>").addClass("component-text");
+	var mainElement = $("<div></div>").addClass("component-text");
+	var pElement = $("<span></span>").addClass("component-text-span");
+
+	$(mainElement).append(pElement);
+
 	$(mainElement).uniqueId();
+	$(pElement).uniqueId();
+
 	if(options){
 		var value = options.value;
-		var richText = options.richText
+		var richText = options.richText;
+		var breakFloat = options.breakFloat;
 		if(richText){	
-			$(mainElement).append($.parseHTML(value));
+			$(pElement).append($.parseHTML(value));
 		}else{
-			$(mainElement).text(value).addClass("lead");
+			$(pElement).text(value).addClass("lead");
+		}
+		if(breakFloat==true){
+			var breakFloatElement = $("<div></div>").addClass("component-clear");
+			$(container).append(breakFloatElement);
 		}
 	}
 	

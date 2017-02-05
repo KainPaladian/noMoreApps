@@ -2,12 +2,12 @@
 
 }
 
-.component-container-body {
-	margin: 10px;
+.component-container-body > * {
 }
 
 .component-container-float > *:not(.component-pagination) {
 	float: left;
+	margin-right: 10px;
 }
 
 .component-container-title {
