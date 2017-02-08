@@ -37,7 +37,7 @@ processPagination = function(container,componentInfo){
 			});
 		}
 	}
-	$(mainElement).attr("data-page","0")
+	$(mainElement).attr("data-page","1")
 	$(mainElement).attr("data-lastLoad",new Date());
 	return mainElement;
 }
