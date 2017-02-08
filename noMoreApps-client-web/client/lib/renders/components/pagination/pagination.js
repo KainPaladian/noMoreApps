@@ -38,6 +38,7 @@ processPagination = function(container,componentInfo){
 		}
 	}
 	$(mainElement).attr("data-page","0")
+	$(mainElement).attr("data-lastLoad",new Date());
 	return mainElement;
 }
 
@@ -49,10 +50,13 @@ processPaginationEvent = function(currentTarget){
 	$(buttonElement).addClass("hidden");
 	var request = $(currentTarget).data("request");
 	var page = $(currentTarget).attr("data-page");
+	var lastLoad = $(currentTarget).attr("data-lastLoad");
 	page = parseInt(page)+1;
 	$(currentTarget).attr("data-page",page);
+	$(currentTarget).attr("data-lastLoad",new Date());
 	var parameters = {};
 	parameters.page=page;
+	parameters.lastLoad = lastLoad;
 	processPaginationRequest(currentTarget,request,parameters,buttonElement,loadingElement);
 }
 

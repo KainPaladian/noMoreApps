@@ -28,7 +28,6 @@ Meteor.methods({
 		var userInfo = getUserInfo(deviceInfo);
 		var options = getDefaultOptions();
 		options.data = buildTerminalDefaultRequest(CONNECT_REQUEST,null,userInfo,deviceInfo);
-		console.log("Send POST to "+botInfo.urlConnect);
 		var response = HTTP.call(
 			'POST', 
 			botInfo.urlConnect,
@@ -46,14 +45,18 @@ Meteor.methods({
 		return response;
 	},
 	sendTerminalRequest : function(botInfo,botEvent,url,httpMethod,parameters,deviceInfo){
-		console.log(url);
 		var event = botEvent==null?TERMINAL_REQUEST:botEvent;
 		var userInfo = getUserInfo(deviceInfo);
 		var options = getDefaultOptions();
-		if(httpMethod=="POST" || httpMethod=="PUT") {
+		var upperHttpMethod = httpMethod.toUpperCase();
+		if(upperHttpMethod=="POST" || upperHttpMethod=="PUT") {
+			console.log("POST");
 			options.data = buildTerminalDefaultRequest(event,parameters,userInfo,deviceInfo);
-		} else if(httpMethod=="GET") {
+		} else if(upperHttpMethod=="GET") {
+			console.log("GET");
 			options.params = JSON.stringify(buildTerminalDefaultRequest(event,parameters,userInfo,deviceInfo));
+		}else{
+			throw new "Method not defined.";
 		}
 		return HTTP.call(httpMethod,url,options);	
 	}
