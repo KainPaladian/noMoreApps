@@ -25,7 +25,6 @@ processForm = function(container,componentInfo){
 				event.preventDefault();
 				var parameters = $(mainElement).serializeArray();
 				closeModal();
-				openLoading();
 				Meteor.call(
 				 	'sendTerminalRequest',
 				 	getBotConnected(),
@@ -36,11 +35,9 @@ processForm = function(container,componentInfo){
 				 	getDeviceInfo(),
 				 	function(error, response) {
 			        	if(error){
-			        		closeLoading();
 			        		throw new Meteor.Error(error);
 			        	}
 			        	processApiResponse(response.data);
-			            closeLoading();
        				}
        			);
 			    return false;

@@ -74,7 +74,6 @@ processCommand = function(container,componentInfo){
 
 
 processCommandRequest = function(request){
-	openLoading();
 	Meteor.call(
 	 	'sendTerminalRequest',
 	 	getBotConnected(),
@@ -85,11 +84,9 @@ processCommandRequest = function(request){
 	 	getDeviceInfo(),
 	 	function(error, response) {
         	if(error){
-        		closeLoading();
         		throw new Meteor.Error(error);
         	}
         	processApiResponse(response.data);
-            closeLoading();
 		}
 	);
 

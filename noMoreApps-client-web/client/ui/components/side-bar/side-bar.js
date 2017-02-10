@@ -1,12 +1,9 @@
 Template.sideBar.rendered = function(){
-    openLoading();
     Meteor.call('allBots',function(error, bots) {
         if(error){
-         closeLoading();
            throw new Meteor.Error(error);
         }
         Session.set("bots",bots);
-        closeLoading();
     });
 }
 
@@ -20,7 +17,6 @@ Template.sideBar.helpers({
 Template.sideBar.events({
      "click .app-info": function(event) {
         event.preventDefault();
-        openLoading();
         var botElement = $(event.currentTarget);
         var botInfo = $(botElement).data("bot-info");
         connectBot(botInfo);

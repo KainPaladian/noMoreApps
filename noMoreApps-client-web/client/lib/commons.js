@@ -2,13 +2,13 @@ openLoading = function () {
     $("#loading").css('display','block');
 }
 
-closeModal = function () {
-	$(".modal").modal("hide");   
-}
-
 closeLoading = function () {
 	$(".modal").modal("hide");
-    $("#loading").css('display','none');
+    $(".name").remove();
+}
+
+closeModal = function () {
+	$(".modal").modal("hide");   
 }
 
 getRenderContainer = function(){
@@ -42,19 +42,16 @@ clearBotConnectedSelection = function(){
 disconnectBot = function(botInfo){
 	if(botInfo.urlDisconnect){
 		clearBotConnectedSelection();
-		openLoading();
 		Meteor.call('disconnect',
 	      botInfo,
 	      getDeviceInfo(),
 	      function(error, response) {
 	        setBotConnected(null);
 	        if(error){
-				closeLoading();
 				throw new Meteor.Error(error);
 	        }else{
 	        	if(!hasBotConnected()){
 	        		processApiResponse(response.data);
-	        		closeLoading();
 	        	}        	        	
 	        }
 		});
@@ -75,19 +72,28 @@ sendDisconnectBotRequest = function(botInfo){
 	}
 }
 
+connectBotById = function(botId){
+	Meteor.call('getBotById',botId,function(error, response) {
+		if(error){
+			throw new Meteor.Error(error);
+		}
+		if(hasBotConnected()){
+			sendDisconnectBotRequest(getBotConnected());			
+		}
+		connectBot(response,getDeviceInfo());
+	});
+}
+
 connectBot = function(botInfo){
-	openLoading();
 	if(hasBotConnected()){
 		sendDisconnectBotRequest(getBotConnected());			
 	}
 	Meteor.call('connect',botInfo,getDeviceInfo(),function(error, response) {
 		if(error){
-			closeLoading();
 			throw new Meteor.Error(error);
 		}
 		setBotConnected(botInfo);
-	    processApiResponse(response.data);            
-	    closeLoading();
+	    processApiResponse(response.data);
 	});
 }
 

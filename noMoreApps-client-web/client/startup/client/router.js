@@ -1,7 +1,15 @@
 FlowRouter.route('/', {
     name: "index",
     action: function(params) {
+        BlazeLayout.render('layout',{main: "welcome"});
+    }
+});
+
+FlowRouter.route('/bot/:botId', {
+    name: "botConnect",
+    action: function(params) {
         BlazeLayout.render('layout',{main: "main"});
+        connectBotById(params.botId);
     }
 });
 
