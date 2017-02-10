@@ -2,6 +2,7 @@
 	{{#if Template.subscriptionsReady}}
 		<h1>Update Bot</h1>
 		{{#autoForm collection="Bots" id="editBotForm" type="update" doc=bot}}
+		  {{> afQuickField name='_id' readonly=true}}
 		  {{> afQuickField name='name'}}
 		  {{> afQuickField name='description'}}
 		  {{> afQuickField name='urlConnect'}}
