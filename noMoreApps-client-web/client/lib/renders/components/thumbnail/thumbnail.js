@@ -31,10 +31,9 @@ processThumbnail = function(container,componentInfo){
 			$(thumbnailElement).append(headerMainElement);
 			$(headerMainElement).uniqueId();
 
-			var headerComponents = headerComponent.components;
 			var headerElement = processComponent(headerMainElement,headerComponent,{insertMode:'prepend'});
 			$(headerElement).uniqueId();
-			$(headerElement).addClass("center-block text-center");
+			$(headerElement).addClass("center-block");
 		}
 
 		if(captionComponents){

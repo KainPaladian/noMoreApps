@@ -25,9 +25,9 @@ processImage = function(container,componentInfo){
 				$(imgElement).addClass("pull-right");		
 			}
 		}
-		if(width){
-			$(imgElement).attr("width",width);
-		}
+		// if(width){
+			$(imgElement).attr("width","300px");
+		// }
 		if(height){
 			$(imgElement).attr("height",height);
 		}
