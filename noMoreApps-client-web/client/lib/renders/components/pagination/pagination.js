@@ -38,7 +38,7 @@ processPagination = function(container,componentInfo){
 		}
 	}
 	$(mainElement).attr("data-page","1")
-	$(mainElement).attr("data-lastLoad",new Date());
+	$(mainElement).attr("data-lastLoad",Date.parse(new Date()));
 	return mainElement;
 }
 
@@ -53,7 +53,7 @@ processPaginationEvent = function(currentTarget){
 	var lastLoad = $(currentTarget).attr("data-lastLoad");
 	page = parseInt(page)+1;
 	$(currentTarget).attr("data-page",page);
-	$(currentTarget).attr("data-lastLoad",new Date());
+	$(currentTarget).attr("data-lastLoad",Date.parse(new Date()));
 	var parameters = {};
 	parameters.page=page;
 	parameters.lastLoad = lastLoad;
