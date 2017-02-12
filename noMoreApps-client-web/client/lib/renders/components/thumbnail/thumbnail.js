@@ -6,7 +6,7 @@ processThumbnail = function(container,componentInfo){
 	var thumbnailElement = $("<div></div>").addClass("thumbnail");
 
 	var headerMainElement = $("<div></div>");
-	var captionMainElement = $("<div></div>").addClass("caption");
+	var captionMainElement = $("<div></div>");
 
 	$(mainElement).append(thumbnailElement);
 
@@ -34,13 +34,14 @@ processThumbnail = function(container,componentInfo){
 			var headerComponents = headerComponent.components;
 			var headerElement = processComponent(headerMainElement,headerComponent,{insertMode:'prepend'});
 			$(headerElement).uniqueId();
-			$(headerElement).addClass("center-block");
+			$(headerElement).addClass("center-block text-center");
 		}
 
 		if(captionComponents){
 			
 			$(thumbnailElement).append(captionMainElement);
 			$(captionMainElement).uniqueId();
+			$(captionMainElement).addClass("caption center-block text-center");
 
 			processComponents(captionMainElement,captionComponents);
 		}
