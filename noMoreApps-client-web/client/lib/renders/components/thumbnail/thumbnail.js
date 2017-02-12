@@ -41,7 +41,7 @@ processThumbnail = function(container,componentInfo){
 			
 			$(thumbnailElement).append(captionMainElement);
 			$(captionMainElement).uniqueId();
-			$(captionMainElement).addClass("caption center-block text-center");
+			$(captionMainElement).addClass("caption");
 
 			processComponents(captionMainElement,captionComponents);
 		}
