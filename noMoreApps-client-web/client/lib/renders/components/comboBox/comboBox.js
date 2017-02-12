@@ -11,6 +11,7 @@ processComboBox = function(container,componentInfo){
 
 		var elements = options.itens;
 		var label = options.label;
+		var name = options.name;
 
 		if(elements){
 			$(elements).each(function(index,element){
@@ -25,6 +26,10 @@ processComboBox = function(container,componentInfo){
 		if(label){
 			var labelElement = $("<label></label>").html(label).attr("for",$(mainElement).attr("id"));
 			$(formGroupElement).prepend(labelElement);
+		}
+
+		if(name){
+			$(mainElement).attr('name',name);
 		}
 	
 	}
