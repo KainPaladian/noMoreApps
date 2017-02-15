@@ -27,13 +27,9 @@ processPagination = function(container,componentInfo){
 		}
 
 		if(request){
-			$(mainElement).scroll(function(event) {
-				event.preventDefault();
-				processPaginationEvent(event.currentTarget);
-			});
-			$(mainElement).click(function(event) {
-				event.preventDefault();
-				processPaginationEvent(event.currentTarget);
+			$(mainElement).click(function(e) {
+				e.preventDefault();
+				processPaginationEvent(e.currentTarget);
 			});
 		}
 	}
@@ -43,7 +39,7 @@ processPagination = function(container,componentInfo){
 }
 
 processPaginationEvent = function(currentTarget){
-	var mainElement = event.currentTarget;
+	var mainElement = currentTarget;
 	var buttonElement = $(currentTarget).find(".component-pagination-btn");
 	var loadingElement = $(currentTarget).find(".component-pagination-loading");
 	$(loadingElement).removeClass("hidden");
@@ -64,7 +60,7 @@ processPaginationRequest = function(mainElement,request,parameters,buttonElement
 	var container = $("#"+$(mainElement).attr("data-parent-component"));
 	var options = {};
 	options.clearContainer = false;
-	options.renderContainer = container ;
+	options.renderContainer = container;
 	Meteor.call(
 	 	'sendTerminalRequest',
 	 	getBotConnected(),
