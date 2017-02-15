@@ -9,15 +9,17 @@ processComboBox = function(container,componentInfo){
 	
 	if(options){
 
-		var elements = options.itens;
+		var itens = options.itens;
 		var label = options.label;
 		var name = options.name;
 
-		if(elements){
-			$(elements).each(function(index,element){
+		if(itens){
+			$(itens).each(function(index,item){
+				var label = item.label;
+				var value = item.value;
 				var optionElement = $("<option></option>").addClass("component-combobox-option");
-				$(optionElement).attr("name",element.name);
-				$(optionElement).html(element.value);
+				$(optionElement).attr("value",item.value);
+				$(optionElement).html(item.label);
 				$(optionElement).uniqueId();
 				$(mainElement).append(optionElement);
 			});

@@ -31,9 +31,9 @@ processCommand = function(container,componentInfo){
 		}
 
 		if(request){
-			$(mainElement).click(function(event) {
-				event.preventDefault();
-				var mainElement = event.currentTarget;
+			$(mainElement).click(function(e) {
+				e.preventDefault();
+				var mainElement = e.currentTarget;
 				var request = $(mainElement).data("request");
 				if(request){
 					processCommandRequest(request);
@@ -49,8 +49,8 @@ processCommand = function(container,componentInfo){
 		}
 
 		if(componentInfo.components){
-			$(mainElement).click(function(event) {
-				var mainElement = event.currentTarget;
+			$(mainElement).click(function(e) {
+				var mainElement = e.currentTarget;
 				var parentContainer = $(mainElement).closest(".component-container");
 				
 				if(parentContainer.length==0){

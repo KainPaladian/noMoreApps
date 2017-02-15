@@ -15,9 +15,9 @@ Template.sideBar.helpers({
 });
 
 Template.sideBar.events({
-     "click .app-info": function(event) {
-        event.preventDefault();
-        var botElement = $(event.currentTarget);
+     "click .app-info": function(e) {
+        e.preventDefault();
+        var botElement = $(e.currentTarget);
         var botInfo = $(botElement).data("bot-info");
         connectBot(botInfo);
         var liBotElement = $(botElement).closest(".li-bot");
