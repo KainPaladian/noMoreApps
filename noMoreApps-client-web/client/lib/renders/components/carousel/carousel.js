@@ -25,6 +25,8 @@ processCarousel = function(container,componentInfo){
       speed: 300,
       slidesToShow: 4,
       slidesToScroll: 4,
+      centerMode: true,
+      variableWidth: true,
       responsive: [
         {
           breakpoint: 1024,
