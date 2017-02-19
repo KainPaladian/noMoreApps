@@ -8,10 +8,10 @@ processNavbar = function(container,componentInfo){
 	var nameBotElement = $("<span></span>").addClass("component-navbar-name-bot");
 	var logoBotElement = $("<img></img>").addClass("app-logo-min");
 
-	var collapseElement = $("<div></div>").addClass("component-navbar-collapse in");
+	var collapseElement = $("<div></div>").addClass("component-navbar-collapse collapse navbar-collapse");
 	var collapseUlElement = $("<ul></ul>").addClass("component-navbar-collapse-ul nav navbar-nav navbar-left");
 	
-	var collapseToggle = $("<button type=\"button\"><span class=\"sr-only\">Toggle navigation</span><span class=\"icon-bar\"></span><span class=\"icon-bar\"></span><span class=\"icon-bar\"></span></button>").addClass("navbar-toggle").attr("data-toggle","collapse").attr("aria-expanded","false");
+	var collapseToggle = $("<button type=\"button\"><span class=\"sr-only\">Toggle navigation</span><span class=\"icon-bar\"></span><span class=\"icon-bar\"></span><span class=\"icon-bar\"></span></button>").addClass("component-navbar-pisca navbar-toggle").attr("data-toggle","collapse").attr("aria-expanded","false");
     
 	var botConnected = getBotConnected();	
 	logoBotElement.attr("src",botConnected.urlLogo);
@@ -61,5 +61,6 @@ processNavbar = function(container,componentInfo){
         });
     }
 
+ 	$(collapseElement).collapse('show');
 	return mainElement;
 }

@@ -97,6 +97,29 @@ connectBot = function(botInfo){
 	});
 }
 
+sendTerminalRequest =  function(request,parameters,options){
+	Meteor.call(
+	 	'sendTerminalRequest',
+	 	getBotConnected(),
+	 	request.event,
+	 	request.url,
+	 	request.method,
+	 	parameters,
+	 	getDeviceInfo(),
+	 	function(error, response) {
+        	if(error){
+        		throw new Meteor.Error(error);
+        	}
+        	processApiResponse(response.data,options);
+		}
+	);
+	closeAllNavebar();
+}
+
 scrollDown = function(delay){
 	$("html, body").animate({ scrollTop: $(document).height() }, delay);
+}
+
+closeAllNavebar = function(){
+	$('.collapse').collapse("hide");
 }

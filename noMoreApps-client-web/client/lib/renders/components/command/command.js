@@ -74,21 +74,21 @@ processCommand = function(container,componentInfo){
 
 
 processCommandRequest = function(request){
-	Meteor.call(
-	 	'sendTerminalRequest',
-	 	getBotConnected(),
-	 	request.event,
-	 	request.url,
-	 	request.method,
-	 	null,
-	 	getDeviceInfo(),
-	 	function(error, response) {
-        	if(error){
-        		throw new Meteor.Error(error);
-        	}
-        	processApiResponse(response.data);
-		}
-	);
-
+	// Meteor.call(
+	//  	'sendTerminalRequest',
+	//  	getBotConnected(),
+	//  	request.event,
+	//  	request.url,
+	//  	request.method,
+	//  	null,
+	//  	getDeviceInfo(),
+	//  	function(error, response) {
+ //        	if(error){
+ //        		throw new Meteor.Error(error);
+ //        	}
+ //        	processApiResponse(response.data);
+	// 	}
+	// );
+	sendTerminalRequest(request,null,null);
     return false;
 }

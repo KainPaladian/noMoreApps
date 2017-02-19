@@ -26,21 +26,22 @@ processForm = function(container,componentInfo){
 				var parameters = convertFormToParameters(mainElement);
 				console.log(parameters);
 				closeModal();
-				Meteor.call(
-				 	'sendTerminalRequest',
-				 	getBotConnected(),
-				 	request.event,
-				 	request.url,
-				 	request.method,
-				 	parameters,
-				 	getDeviceInfo(),
-				 	function(error, response) {
-			        	if(error){
-			        		throw new Meteor.Error(error);
-			        	}
-			        	processApiResponse(response.data);
-       				}
-       			);
+				// Meteor.call(
+				//  	'sendTerminalRequest',
+				//  	getBotConnected(),
+				//  	request.event,
+				//  	request.url,
+				//  	request.method,
+				//  	parameters,
+				//  	getDeviceInfo(),
+				//  	function(error, response) {
+			 //        	if(error){
+			 //        		throw new Meteor.Error(error);
+			 //        	}
+			 //        	processApiResponse(response.data);
+    //    				}
+    //    			);
+    			sendTerminalRequest(request,parameters,null);
 			    return false;
 			});
 		}

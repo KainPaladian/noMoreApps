@@ -61,6 +61,7 @@ processPaginationRequest = function(mainElement,request,parameters,buttonElement
 	var options = {};
 	options.clearContainer = false;
 	options.renderContainer = container;
+	closeAllNavebar();
 	Meteor.call(
 	 	'sendTerminalRequest',
 	 	getBotConnected(),
