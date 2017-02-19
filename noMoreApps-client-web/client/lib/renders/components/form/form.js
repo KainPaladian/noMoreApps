@@ -23,7 +23,7 @@ processForm = function(container,componentInfo){
 		if(request){
 			$(mainElement).submit(function(e){
 				e.preventDefault();
-				var parameters = $(mainElement).serializeArray();
+				var parameters = convertFormToParameters(mainElement);
 				console.log(parameters);
 				closeModal();
 				Meteor.call(
@@ -49,4 +49,15 @@ processForm = function(container,componentInfo){
 	processComponents(mainElement,componentInfo.components);
 	$(mainElement).append(submitElement);
 	return mainElement;
+}
+
+convertFormToParameters = function(form){
+	var parametersForm = $(form).serializeArray();
+	var parameters = {};
+	if(parametersForm.length>0){
+		$(parametersForm).each(function(index,item) {
+  			parameters[item.name] = item.value;
+		});
+	}
+	return parameters;
 }
