@@ -109,8 +109,6 @@ connectBot = function(botInfo){
 }
 
 sendTerminalRequest =  function(request,parameters,options){
-	console.log(request);
-	console.log(parameters);
 	openLoading();
 	var botInfo = getBotConnected();
 	GAnalytics.event(botInfo.name,"sendTerminalRequest", request.url);
@@ -123,8 +121,6 @@ sendTerminalRequest =  function(request,parameters,options){
 	 	parameters,
 	 	getDeviceInfo(),
 	 	function(error, response) {
-	 		console.log(response);
-	 		console.log(response.data);
         	if(error){
         		throw new Meteor.Error(error);
         	}

@@ -35,12 +35,12 @@ processImage = function(container,componentInfo){
 			$(imgElement).removeClass("img-responsive");
 		}
 	}
-	var loadingInfo = {type:"LOADING"};
-	var loadingElement = processComponent(mainElement,loadingInfo);
+	// var loadingInfo = {type:"LOADING"};
+	// var loadingElement = processComponent(mainElement,loadingInfo);
 
-	$(imgElement).on("load",function() {
-  		$(loadingElement).hide();
-	});	
+	// $(imgElement).on("load",function() {
+ //  		$(loadingElement).hide();
+	// });	
 
 	return mainElement;
 }
