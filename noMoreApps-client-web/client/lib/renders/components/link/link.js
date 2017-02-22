@@ -1,7 +1,7 @@
 processLink = function(container,componentInfo){
 	var options = componentInfo.options;
 	mainElement = $("<div></div>").addClass("component-link");
-	linkElement = $("<a href=\"#\"></a>").addClass("component-link-link");
+	linkElement = $("<a href=\"\"></a>").addClass("component-link-link");
 	
 	$(mainElement).append(linkElement);
 

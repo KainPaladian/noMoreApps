@@ -4,7 +4,7 @@ openLoading = function () {
 
 closeLoading = function () {
 	$(".modal").modal("hide");
-    $(".name").remove();
+ 	$("#loading").css('display','none');
 }
 
 closeModal = function () {
@@ -40,39 +40,46 @@ clearBotConnectedSelection = function(){
 }
 
 disconnectBot = function(botInfo){
+	openLoading();
+	GAnalytics.event(botInfo.name,"disconnectBot")
 	if(botInfo.urlDisconnect){
 		clearBotConnectedSelection();
 		Meteor.call('disconnect',
-	      botInfo,
-	      getDeviceInfo(),
-	      function(error, response) {
-	        setBotConnected(null);
-	        if(error){
+			botInfo,
+			getDeviceInfo(),
+			function(error, response) {
+			setBotConnected(null);
+			if(error){
 				throw new Meteor.Error(error);
-	        }else{
-	        	if(!hasBotConnected()){
-	        		processApiResponse(response.data);
-	        	}        	        	
-	        }
+			}else{
+				if(!hasBotConnected()){
+					processApiResponse(response.data);
+				}        	        	
+			}
+			closeLoading();
 		});
 	}
 }
 
 sendDisconnectBotRequest = function(botInfo){
+	GAnalytics.event(botInfo.name,"sendDisconnectBotRequest");
 	clearBotConnectedSelection();
+	openLoading();
 	if(botInfo.urlDisconnect){
 		Meteor.call('disconnect',
-	      botInfo,
-	      getDeviceInfo(),
-	      function(error, response) {
-	        if(error){
+			botInfo,
+			getDeviceInfo(),
+			function(error, response) {
+			if(error){
 				throw new Meteor.Error(error);
-	        }
+			}
+	    	closeLoading();
 		});
 	}
 }
 
 connectBotById = function(botId){
+	openLoading();
 	Meteor.call('getBotById',botId,function(error, response) {
 		if(error){
 			throw new Meteor.Error(error);
@@ -81,10 +88,13 @@ connectBotById = function(botId){
 			sendDisconnectBotRequest(getBotConnected());			
 		}
 		connectBot(response,getDeviceInfo());
+		closeLoading();
 	});
 }
 
 connectBot = function(botInfo){
+	openLoading();
+	GAnalytics.event(botInfo.name,"connectBot");
 	if(hasBotConnected()){
 		sendDisconnectBotRequest(getBotConnected());			
 	}
@@ -94,23 +104,32 @@ connectBot = function(botInfo){
 		}
 		setBotConnected(botInfo);
 	    processApiResponse(response.data);
+	    closeLoading();
 	});
 }
 
 sendTerminalRequest =  function(request,parameters,options){
+	console.log(request);
+	console.log(parameters);
+	openLoading();
+	var botInfo = getBotConnected();
+	GAnalytics.event(botInfo.name,"sendTerminalRequest", request.url);
 	Meteor.call(
 	 	'sendTerminalRequest',
-	 	getBotConnected(),
+	 	botInfo,
 	 	request.event,
 	 	request.url,
 	 	request.method,
 	 	parameters,
 	 	getDeviceInfo(),
 	 	function(error, response) {
+	 		console.log(response);
+	 		console.log(response.data);
         	if(error){
         		throw new Meteor.Error(error);
         	}
         	processApiResponse(response.data,options);
+        	closeLoading();
 		}
 	);
 	closeAllNavebar();

@@ -50,10 +50,8 @@ Meteor.methods({
 		var options = getDefaultOptions();
 		var upperHttpMethod = httpMethod.toUpperCase();
 		if(upperHttpMethod=="POST" || upperHttpMethod=="PUT") {
-			console.log("POST");
 			options.data = buildTerminalDefaultRequest(event,parameters,userInfo,deviceInfo);
 		} else if(upperHttpMethod=="GET") {
-			console.log("GET");
 			options.params = JSON.stringify(buildTerminalDefaultRequest(event,parameters,userInfo,deviceInfo));
 		}else{
 			throw new "Method not defined.";

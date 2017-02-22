@@ -14,7 +14,7 @@ processCommand = function(container,componentInfo){
 		var modalElement = null;
 
 		if(type=="link"){
-			mainElement = $("<a href=\"#\"></a>").addClass("component-command");
+			mainElement = $("<a href=\"\"></a>").addClass("component-command");
 			$(mainElement).uniqueId();
 		}
 
