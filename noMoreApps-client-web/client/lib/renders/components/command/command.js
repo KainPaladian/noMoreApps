@@ -9,9 +9,20 @@ processCommand = function(container,componentInfo){
 		var value = options.value;
 		var request = options.request;
 		var type = options.type;
+		var horizontalPosition = options.horizontalPosition;
 		var innerComponents = options.innerComponents;
 		var modalInfo = options.modalComponent;
 		var modalElement = null;
+
+		if(horizontalPosition){
+			if(horizontalPosition=="center"){
+				$(mainElement).addClass("center-block");		
+			}else if(horizontalPosition=="left"){
+				$(mainElement).addClass("pull-left");		
+			}else if(horizontalPosition=="right"){
+				$(mainElement).addClass("pull-right");		
+			}
+		}
 
 		if(type=="link"){
 			mainElement = $("<a href=\"\"></a>").addClass("component-command");
@@ -36,7 +47,7 @@ processCommand = function(container,componentInfo){
 				var mainElement = e.currentTarget;
 				var request = $(mainElement).data("request");
 				if(request){
-					processCommandRequest(request);
+					processCommandRequest(request,mainElement);
 				}
 			});
 		}
@@ -73,22 +84,12 @@ processCommand = function(container,componentInfo){
 }
 
 
-processCommandRequest = function(request){
-	// Meteor.call(
-	//  	'sendTerminalRequest',
-	//  	getBotConnected(),
-	//  	request.event,
-	//  	request.url,
-	//  	request.method,
-	//  	null,
-	//  	getDeviceInfo(),
-	//  	function(error, response) {
- //        	if(error){
- //        		throw new Meteor.Error(error);
- //        	}
- //        	processApiResponse(response.data);
-	// 	}
-	// );
-	sendTerminalRequest(request,null,null);
+processCommandRequest = function(request,mainElement){
+	var parameters = null;
+	if(request.type==REQUEST_TYPE_ASYNC){
+		parameters = {};
+		parameters.idComponentRequest = $(mainElement).attr("id");
+	}
+	sendTerminalRequest(request,parameters,null);
     return false;
 }

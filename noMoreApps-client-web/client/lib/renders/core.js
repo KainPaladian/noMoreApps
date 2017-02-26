@@ -18,7 +18,29 @@ processApiResponse = function(apiResponse,options) {
 		if(apiResponse.type==API_RESPONSE){
 			processTypeAPIResponse(apiResponse,options);
 		}
+		if(apiResponse.type==API_RESPONSE_CHANGE_COMPONENT){
+			processTypeAPIResponseChangeComponent(apiResponse,options);
+		}
 	}
+}
+
+processTypeAPIResponseChangeComponent = function(apiResponse,options) {
+	var newComponent = apiResponse.body.newComponent;
+	var idOldComponent = apiResponse.body.idOldComponent;
+
+	if(options){
+		clearContainer = options.clearContainer;
+		renderContainer = options.renderContainer;
+	}
+
+	if(newComponent && idOldComponent){
+		var oldComponent = $("#"+idOldComponent);
+		if(oldComponent){
+			var newComponentElement = processComponent(null,newComponent);
+			$(oldComponent).replaceWith($(newComponentElement));
+		}
+	}
+
 }
 
 processTypeAPIResponse = function(apiResponse,options) {
@@ -120,19 +142,20 @@ processComponent = function(container,componentInfo,options){
 	if(componentInfo.type==COMPONENT_TYPE_LINK){
 		component = processLink(container,componentInfo);
 	}
-	if(options){
-		if(options.insertMode=='prepend'){
-			$(container).prepend(component);	
-		}else if(options.insertMode=='append'){
-			$(container).append(component);
-		}else if(options.insertMode=='html'){
-			var html = $(container).html();
-			$(container).html(html+component);
-		}		
-	}else{
-		$(container).append(component);	
-	}
-	
+	if(container){
+		if(options){
+			if(options.insertMode=='prepend'){
+				$(container).prepend(component);	
+			}else if(options.insertMode=='append'){
+				$(container).append(component);
+			}else if(options.insertMode=='html'){
+				var html = $(container).html();
+				$(container).html(html+component);
+			}		
+		}else{
+			$(container).append(component);	
+		}	
+	}	
 	return component;
 }
 

@@ -14,6 +14,7 @@ processContainer = function(container,componentInfo){
 		var feedConfig = options.paginationComponent;
 		var floatElements = options.floatElements;
 		var margin = options.margin;
+		var marginBottom = options.marginBottom;
 
 		if(title){
 			
@@ -61,6 +62,10 @@ processContainer = function(container,componentInfo){
 
 	if(margin){
 		$(mainElement).css("margin",margin);
+	}
+
+	if(marginBottom){
+		$(mainElement).css("margin-bottom",marginBottom);
 	}
 
 	return mainElement;

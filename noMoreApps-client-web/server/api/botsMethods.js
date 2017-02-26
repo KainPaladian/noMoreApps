@@ -49,13 +49,21 @@ Meteor.methods({
 		var userInfo = getUserInfo(deviceInfo);
 		var options = getDefaultOptions();
 		var upperHttpMethod = httpMethod.toUpperCase();
-		if(upperHttpMethod=="POST" || upperHttpMethod=="PUT") {
+		if(upperHttpMethod=="POST" || upperHttpMethod=="PUT" || upperHttpMethod=="DELETE") {
 			options.data = buildTerminalDefaultRequest(event,parameters,userInfo,deviceInfo);
 		} else if(upperHttpMethod=="GET") {
 			options.params = JSON.stringify(buildTerminalDefaultRequest(event,parameters,userInfo,deviceInfo));
+		}
+		if(upperHttpMethod=="POST") {
+			return HTTP.post(url,options);	
+		}else if(upperHttpMethod=="DELETE") {
+			return HTTP.del(url,options);	
+		}else if(upperHttpMethod=="GET") {
+			return HTTP.get(url,options);
+		}else if(upperHttpMethod=="PUT") {
+			return HTTP.put(url,options);	
 		}else{
 			throw new "Method not defined.";
 		}
-		return HTTP.call(httpMethod,url,options);	
 	}
 });
