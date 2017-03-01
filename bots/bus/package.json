@@ -1,0 +1,9 @@
+{
+    "name": "bus-api",
+    "main": "server.js",
+    "dependencies": {
+        "express": "~4.0.0",
+        "mongoose": "~4.7.3",
+        "body-parser": "~1.0.1"
+    }
+}
