@@ -1,4 +1,5 @@
 processApiResponse = function(apiResponse,options) {
+	console.log(apiResponse);
 	if(getBotConnected().requiredAuthentication && Meteor.user()==null){
 		var renderContainer = null;
 		if(hasBotConnected()){

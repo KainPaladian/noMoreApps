@@ -6,40 +6,40 @@ getDefaultOptions = function(){
 	return options;
 }
 
-buildTerminalDefaultRequest = function(messageType,parameters,userInfo,deviceInfo){
-	var request =  {			
-		type: messageType,
-		body: {}
-	};
-	if(userInfo){
-		request.body.user = userInfo;
+buildTerminalDefaultRequest = function(httpMethod,event,parameters,userInfo,deviceInfo){
+	if(httpMethod!="GET"){
+		var request =  {			
+			type: event,
+			body: {}
+		};
+		if(userInfo){
+			request.body.user = userInfo;
+		}
+		if(deviceInfo){
+			request.body.device = deviceInfo;
+		}
+		if(parameters){
+			request.body.parameters = parameters;
+		}
+		return request;
+	}else{
+		return parameters;
 	}
-	if(deviceInfo){
-		request.body.device = deviceInfo;
-	}
-	if(parameters){
-		request.body.parameters = parameters;
-	}
-	return request;
 }
 
 Meteor.methods({
 	connect : function(botInfo,deviceInfo) {
 		var userInfo = getUserInfo(deviceInfo);
 		var options = getDefaultOptions();
-		options.data = buildTerminalDefaultRequest(CONNECT_REQUEST,null,userInfo,deviceInfo);
-		var response = HTTP.call(
-			'POST', 
-			botInfo.urlConnect,
-			options);
+		options.data = buildTerminalDefaultRequest("POST",CONNECT_REQUEST,null,userInfo,deviceInfo);
+		var response = HTTP.post(botInfo.urlConnect,options);
 		return response;
 	},
 	disconnect : function(botInfo,deviceInfo) {
 		var userInfo = getUserInfo(deviceInfo);
 		var options = getDefaultOptions();
-		options.data = buildTerminalDefaultRequest(DISCONNECT_REQUEST,null,userInfo,deviceInfo);
-		var response = HTTP.call(
-			'POST', 
+		options.data = buildTerminalDefaultRequest("POST",DISCONNECT_REQUEST,null,userInfo,deviceInfo);
+		var response = HTTP.post(
 			botInfo.urlDisconnect,
 			options);
 		return response;
@@ -50,9 +50,9 @@ Meteor.methods({
 		var options = getDefaultOptions();
 		var upperHttpMethod = httpMethod.toUpperCase();
 		if(upperHttpMethod=="POST" || upperHttpMethod=="PUT" || upperHttpMethod=="DELETE") {
-			options.data = buildTerminalDefaultRequest(event,parameters,userInfo,deviceInfo);
+			options.data = buildTerminalDefaultRequest(upperHttpMethod,event,parameters,userInfo,deviceInfo);
 		} else if(upperHttpMethod=="GET") {
-			options.params = JSON.stringify(buildTerminalDefaultRequest(event,parameters,userInfo,deviceInfo));
+			options.params = buildTerminalDefaultRequest(upperHttpMethod,event,parameters,userInfo,deviceInfo);
 		}
 		if(upperHttpMethod=="POST") {
 			return HTTP.post(url,options);	
