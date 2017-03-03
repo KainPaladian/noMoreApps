@@ -2,8 +2,9 @@ exports.template = {
   "body": {
     "containerComponent": {
       "options": {
-        "title": "Horários do Ônibus @refBus",
-        "titleHorizontalPosition": "center"
+        "title": "Horários do ônibus @refBus",
+        "titleHorizontalPosition": "center",
+        "margin":"20px"
       },
       "components": [
         

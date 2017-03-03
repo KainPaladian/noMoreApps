@@ -1,6 +1,8 @@
 exports.template = {
   "options": {
-    "title": "Partida @startAtDescription"
+    "title": "Partida @startAtDescription",
+    "titleFontSize":"medium",
+    "margin":"20px"
   },
   "components": [
     

@@ -1,6 +1,8 @@
 exports.template = {
   "options": {
-    "title": "@periodTypeDescription"
+    "title": "@periodTypeDescription",
+    "titleFontSize":"medium",
+    "margin":"20px"
   },
   "components": [
     

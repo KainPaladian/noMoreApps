@@ -1,6 +1,8 @@
 exports.template = {
   "options": {
-    "value": "@scheduleValue"
+    "matrix": [],
+    "hasHeader":false,
+    "margin":"20px"
   },
-  "type": "TEXT"
+  "type": "TABLE"
 }

@@ -23,10 +23,27 @@ exports.findByRefBus =function (refBus,req,res){
 				startAt.periodType.forEach(function(periodType,index){
 					var busPeriodType =  JSON.parse(JSON.stringify(busPeriodTypeTemplate).replace("@periodTypeDescription",periodType.description));
 					busStartAt.components.push(busPeriodType);
+
+					var matrixSchedule = [[]];
+					var currentRow = 0;
+					var currentCollumn = -1;
+					var maxCollumn = 4;
+
 					periodType.schedule.forEach(function(schedule,index){
-						var busSchedule =  JSON.parse(JSON.stringify(busScheduleTemplate).replace("@scheduleValue",Buses.getTimeSchedule(schedule)));
-						busPeriodType.components.push(busSchedule);
+						currentCollumn++;
+						if(currentCollumn<=maxCollumn){
+							matrixSchedule[currentRow].push(Buses.getTimeSchedule(schedule));
+						}else{
+							currentCollumn=0;
+							currentRow++;
+							matrixSchedule.push([]);
+							matrixSchedule[currentRow].push(Buses.getTimeSchedule(schedule))
+						}
 					});
+
+					var busSchedule =  JSON.parse(JSON.stringify(busScheduleTemplate));
+					busSchedule.options.matrix = matrixSchedule;
+					busPeriodType.components.push(busSchedule);
 				});
 			});				
 			

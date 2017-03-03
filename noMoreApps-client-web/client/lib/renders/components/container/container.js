@@ -10,6 +10,7 @@ processContainer = function(container,componentInfo){
 	if(options){
 		var title = options.title;
 		var titleHorizontalPosition = options.titleHorizontalPosition;
+		var titleFontSize = options.titleFontSize;
 		var layoutRender = options.layoutRender;
 		var feedConfig = options.paginationComponent;
 		var floatElements = options.floatElements;
@@ -21,7 +22,13 @@ processContainer = function(container,componentInfo){
 			var headerElement = $("<div></div>").addClass("component-container-header");
 			$(headerElement).uniqueId();
 			
-			var titleElement = $("<h1></h1>").text(title).addClass("component-container-title");
+			var titleElement = $("<span></span>").text(title).addClass("component-container-title");
+			
+			if(titleFontSize==null){
+				titleFontSize = "xx-large";
+			}
+			$(titleElement).css("font-size",titleFontSize);
+			
 			$(titleElement).uniqueId();
 
 			$(headerElement).append(titleElement);
