@@ -2,7 +2,8 @@ exports.template = {
   "options": {
     "title": "Partida @startAtDescription",
     "titleFontSize":"medium",
-    "margin":"20px"
+    "collapse":"true",
+    "marginLeft": "10px"
   },
   "components": [
     

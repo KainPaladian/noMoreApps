@@ -24,7 +24,7 @@ module.exports = {
       MONGO_URL: 'mongodb://talkabot:talkabot1@ds151068.mlab.com:51068/talkabot'
     },
     dockerImage: 'abernix/meteord:base',
-    deployCheckWaitTime: 15
+    deployCheckWaitTime: 30
   },
   // mongo: { 
   //   oplog: true,

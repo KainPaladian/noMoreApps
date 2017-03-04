@@ -4,7 +4,7 @@ exports.template = {
       "options": {
         "title": "Horários do ônibus @refBus",
         "titleHorizontalPosition": "center",
-        "margin":"20px"
+        "marginTop":"20px"
       },
       "components": [
         

@@ -8,6 +8,8 @@ processTable = function(container,componentInfo){
 		var matrix = options.matrix;
 		var hasHeader = options.hasHeader;
 		var margin = options.margin;
+		var marginBottom = options.marginBottom;
+		var marginTop = options.marginTop;
 		if(matrix){
 
 			var subContainer = null
@@ -47,6 +49,12 @@ processTable = function(container,componentInfo){
 
 			if(margin){
 				$(mainElement).css("margin",margin);
+			}
+			if(marginBottom){
+				$(mainElement).css("margin-bottom",marginBottom);
+			}
+			if(marginTop){
+				$(mainElement).css("margin-top",marginTop);
 			}
 		}
 

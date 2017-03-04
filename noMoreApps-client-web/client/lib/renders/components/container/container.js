@@ -6,8 +6,11 @@ processContainer = function(container,componentInfo){
 	var mainElement = $("<div></div>").addClass("component-container"); 
 
 	$(mainElement).uniqueId();
+
+	var bodyCollapse = null;
 	
 	if(options){
+
 		var title = options.title;
 		var titleHorizontalPosition = options.titleHorizontalPosition;
 		var titleFontSize = options.titleFontSize;
@@ -16,13 +19,18 @@ processContainer = function(container,componentInfo){
 		var floatElements = options.floatElements;
 		var margin = options.margin;
 		var marginBottom = options.marginBottom;
+		var marginTop = options.marginTop;
+		var marginLeft = options.marginLeft;
+		var collapse = options.collapse;
+
+		var titleElement = null;
 
 		if(title){
 			
 			var headerElement = $("<div></div>").addClass("component-container-header");
 			$(headerElement).uniqueId();
 			
-			var titleElement = $("<span></span>").text(title).addClass("component-container-title");
+			titleElement = $("<span></span>").text(title).addClass("component-container-title");
 			
 			if(titleFontSize==null){
 				titleFontSize = "xx-large";
@@ -40,21 +48,82 @@ processContainer = function(container,componentInfo){
 				}				
 			}
 		}
+
 		if(layoutRender==true){
 			$(mainElement).addClass("region-render");
 		}
+
+		if(margin){
+			$(mainElement).css("margin",margin);
+		}
+
+		if(marginBottom){
+			$(mainElement).css("margin-bottom",marginBottom);
+		}
+
+		if(marginTop){
+			$(mainElement).css("margin-top",marginTop);
+		}
+
+		if(marginLeft){
+			$(mainElement).css("margin-left",marginLeft);
+		}
+
+		if(collapse){
+
+			var titleElementCollapse = null;		
+			if(titleElement){
+				titleElementCollapse = $(titleElement).clone();
+				$(titleElement).remove();
+			}else{
+				titleElementCollapse = $("<span>...</span>");
+			}
+
+			var bodyCollapse = $(mainElement).clone();
+			$(bodyCollapse).attr("id",null);
+			$(bodyCollapse).uniqueId();
+			$(bodyCollapse).addClass("collapse");
+
+			var collapseElement = $("<div></div>").addClass("component-container-collapse"); 
+			$(collapseElement).uniqueId();
+
+			$(collapseElement).append(titleElementCollapse);
+
+			$(collapseElement).attr("aria-expanded","false");
+			$(collapseElement).attr("aria-controls",bodyCollapse.attr("id"));
+			$(collapseElement).attr("data-toggle","collapse");
+			$(collapseElement).addClass("well");
+
+			$(collapseElement).on( "click", function() {
+				$("#"+$(this).attr("aria-controls")).collapse('toggle');
+			});
+
+			$(mainElement).empty();
+
+			$(mainElement).append(collapseElement);
+			$(mainElement).append(bodyCollapse);
+
+		}
+
 	}
 
 	var bodyElement = $("<div></div>").addClass("component-container-body");
 	$(bodyElement).uniqueId();
 	
-	$(mainElement).append(bodyElement);
+	var elementToAppendBody = null;
+	if(bodyCollapse){
+		elementToAppendBody = bodyCollapse;
+	}else{
+		elementToAppendBody = mainElement;
+	}
+
+	$(elementToAppendBody).append(bodyElement);
 
 	if(components){
 		if(floatElements){
 			$(bodyElement).addClass("component-container-float");
 			var clearElement = $("<div></div>").addClass("component-container-clear");
-			$(mainElement).append(clearElement);
+			$(elementToAppendBody).append(clearElement);
 			$(components).each(function(index,componentInfo){
 				processComponent(bodyElement,componentInfo);
 			});
@@ -65,14 +134,6 @@ processContainer = function(container,componentInfo){
 
 	if(feedConfig){
 		processComponent(bodyElement,feedConfig);
-	}
-
-	if(margin){
-		$(mainElement).css("margin",margin);
-	}
-
-	if(marginBottom){
-		$(mainElement).css("margin-bottom",marginBottom);
 	}
 
 	return mainElement;

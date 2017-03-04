@@ -4,8 +4,8 @@
 		  	"account":"UA-92297042-1",
 		  	"cookieName": "talkabot_analytics",
       		"cookieDomain": "web.talkabot.com.br",
-			"cookieExpires": 60 *60 * 24 * 28,  // Time in seconds.
-      		"trackInterests": true,  // Enable also GA website and
+			"cookieExpires": 60 * 60 * 24 * 28,
+      		"trackInterests": true,
       		"trackInPage": true    
 		}
 	}	
