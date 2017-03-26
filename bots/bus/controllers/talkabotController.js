@@ -19,7 +19,7 @@ exports.findByRefBus =function (refBus,req,res){
 
 			bus.startAt.forEach(function(startAt,index){
 				var busStartAt =  JSON.parse(JSON.stringify(busStartAtTemplate).replace("@startAtDescription",startAt.description));
-				response.body.containerComponent.components.push(busStartAt);
+				response.body.layout.containerComponent.components.push(busStartAt);
 				startAt.periodType.forEach(function(periodType,index){
 					var busPeriodType =  JSON.parse(JSON.stringify(busPeriodTypeTemplate).replace("@periodTypeDescription",periodType.description));
 					busStartAt.components.push(busPeriodType);

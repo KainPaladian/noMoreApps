@@ -13,6 +13,10 @@ processLayoutDefault = function(container,layoutInfo){
 
 	var innerContainerInfo = layoutInfo.containerComponent;
 
+	if(innerContainerInfo.options==null){
+		innerContainerInfo.options = {};
+	}
+
 	innerContainerInfo.options.layoutRender = true;
 	
 	processComponent(container,innerContainerInfo);

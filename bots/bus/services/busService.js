@@ -5,10 +5,13 @@ exports.findAll = function(callBack){
 }
 
 exports.findByRefBus = function(refBus,callback){
-	Buses.findOne({"ref":refBus},function(err, bus){
-		sortSchedule(bus);
-		callback(err,bus);
-	});
+	if(refBus){
+		refBus = refBus.toUpperCase().trim();
+		Buses.findOne({"ref":refBus},function(err, bus){
+			sortSchedule(bus);
+			callback(err,bus);
+		});
+	}
 }
 
 exports.deleteByRefBus = function(refBus,callback){

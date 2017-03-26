@@ -12,6 +12,7 @@ processText = function(container,componentInfo){
 		var value = options.value;
 		var richText = options.richText;
 		var breakFloat = options.breakFloat;
+		var marginBottom = options.marginBottom;
 		if(richText){	
 			$(pElement).append($.parseHTML(value));
 		}else{
@@ -20,6 +21,9 @@ processText = function(container,componentInfo){
 		if(breakFloat==true){
 			var breakFloatElement = $("<div></div>").addClass("component-clear");
 			$(container).append(breakFloatElement);
+		}
+		if(marginBottom){
+			$(mainElement).css("margin-bottom",marginBottom);
 		}
 	}
 	

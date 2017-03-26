@@ -4,9 +4,29 @@ var Buses = require('../models/buses');
 var busService     = require('../services/busService');
 var urlPageWithBusLines = 'http://servicosbhtrans.pbh.gov.br/bhtrans/e-servicos/e-servicos.asp?servico=S01&opcao=QUADRO%20DE%20HOR%C3%81RIOS%20DE%20%C3%94NIBUS';
 var urlPageWithBusShedule = 'http://servicosbhtrans.pbh.gov.br/bhtrans/e-servicos/S01F02-quadroHorarioResultado.asp?linha=@refBus';
+var CronJob = require('cron').CronJob;
+
+var job = new CronJob({
+  cronTime: '00 00 03 * * 0-6',
+  onTick: function() {
+  	console.log("Start cron spider...")
+  	start();
+  },
+  start: true,
+  timeZone: 'America/Sao_Paulo'
+});
 
 exports.start = function(req,res){
 	
+	start();
+
+	res.status(200);
+	res.send("received");
+	
+}
+
+start = function(){
+	console.log("Spider started...");
 	var buses = [];
 	var c = 0;
 	var countBusesToProcess = 0;
@@ -37,7 +57,11 @@ exports.start = function(req,res){
 	    	buses.forEach(function(bus,index){
 				busService.deleteByRefBus(bus.ref,function(err, removed){
 					busService.save(bus);
+					buses[index] = null;
 				});  		
+	    	});
+	    	buses.forEach(function(bus,index){
+				busService.deleteByRefBus(bus.ref);  		
 	    	});
 	    	console.log("Done ;)");
 	    },
@@ -70,7 +94,7 @@ exports.start = function(req,res){
 		var bus = searchBusByRefOnArray(refBus,buses);
 		console.log("Process bus "+refBus+".");
 		console.log("Remaning "+(countBusesToProcess-countBusesProcessed)+ " to process.");
-		doc.$("#bloco2 h3").each(function (i,elem) {
+		doc.$("div[data-role='collapsible-set'] h3").each(function (i,elem) {
 			var dataElement = doc.$(elem);
 			var description = doc.$(dataElement).html().trim();
 			if(description.indexOf("Partida") !== -1){
@@ -80,6 +104,7 @@ exports.start = function(req,res){
 				startAt.periodType = [];
 				startAt.description = description;
 				bus.startAt.push(startAt);
+				console.log("Process start at "+description+" from "+refBus+".");
 			}else{
 				indexPeriodType++;
 				var periodType = {};
@@ -107,9 +132,6 @@ exports.start = function(req,res){
 	};
 
 	spider.queue(urlPageWithBusLines, busLinesRequest);
-
-    res.status(200);
-	res.send("received");
 }
 
 searchBusByRefOnArray = function(refBus,busesArray){

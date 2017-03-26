@@ -1,4 +1,5 @@
 var busService     = require('../services/busService');
+var spider     = require('../lib/spider.js');
 
 exports.findAll = function (req,res){
 	busService.findAll(function(err,buses){
