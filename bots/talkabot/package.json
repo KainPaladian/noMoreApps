@@ -1,0 +1,14 @@
+{
+  "name": "bus-api",
+  "main": "server.js",
+  "dependencies": {
+    "body-parser": "~1.0.1",
+    "content-type-parser": "^1.0.1",
+    "express": "~4.0.0",
+    "jsdom": "^9.11.0",
+    "mongoose": "~4.7.3",
+    "request": "latest",
+    "tough-cookie": "^2.3.2",
+    "whatwg-url": "^4.5.0"
+  }
+}

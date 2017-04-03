@@ -6,15 +6,15 @@ var urlBase = 'http://www.joaobidu.com.br/jb/horoscopo/signos/previsao-@signo';
 var signos = ["aries","touro","gemeos","cancer","leao","virgem","libra","escorpiao","sagitario","capricornio","aquario","peixes"];
 var CronJob = require('cron').CronJob;
 
-// var job = new CronJob({
-//   cronTime: '00 00 03 * * 0-6',
-//   onTick: function() {
-//   	console.log("Start cron spider...")
-//   	start();
-//   },
-//   start: true,
-//   timeZone: 'America/Sao_Paulo'
-// });index
+var job = new CronJob({
+  cronTime: '00 00 03 * * 0-6',
+  onTick: function() {
+  	console.log("Start cron spider...")
+  	start();
+  },
+  start: true,
+  timeZone: 'America/Sao_Paulo'
+});
 
 exports.start = function(req,res){
 	

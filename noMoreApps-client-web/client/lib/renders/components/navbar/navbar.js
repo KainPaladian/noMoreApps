@@ -16,7 +16,6 @@ processNavbar = function(container,componentInfo){
 	var botConnected = getBotConnected();	
 	logoBotElement.attr("src",botConnected.urlLogo);
 	
-
 	$(mainElement).uniqueId();
 	$(containerFluidElement).uniqueId();
 	$(headerElement).uniqueId();

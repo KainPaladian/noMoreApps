@@ -146,6 +146,9 @@ processComponent = function(container,componentInfo,options){
 	if(componentInfo.type==COMPONENT_TYPE_TABLE){
 		component = processTable(container,componentInfo);
 	}
+	if(componentInfo.type==COMPONENT_TYPE_CHAT){
+		component = processChat(container,componentInfo);
+	}
 	if(container){
 		if(options){
 			if(options.insertMode=='prepend'){

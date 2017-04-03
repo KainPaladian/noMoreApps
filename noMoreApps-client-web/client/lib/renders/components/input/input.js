@@ -22,9 +22,13 @@ processInput = function(container,componentInfo){
 		}
 
 		if(type){
-			$(mainElement).attr("type",type);
-			if(type=="FILE"){
-				$(mainElement).removeClass("form-control");
+			if(type=="textArea"){
+				mainElement = $("<textarea></textarea>").addClass("component-input form-control");
+			}else{
+				$(mainElement).attr("type",type);
+				if(type=="FILE"){
+					$(mainElement).removeClass("form-control");
+				}
 			}
 		}
 	}
