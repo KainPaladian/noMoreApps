@@ -125,8 +125,15 @@ processSendMessageRequest = function(chatBody,request,parameters){
         	if(error){
         		throw new Meteor.Error(error);
         	}
-        	if(response.data.type=="CHAT_API_RESPONSE"){
-	        	var components = response.data.body.components;
+        	if(response.data.type==CHAT_API_RESPONSE){
+	        	var components = null;
+	        	if(response.data.body.components){
+	        		components = response.data.body.components;
+	        	}
+	        	if(response.data.body.containerComponent){
+	        		var containerComponent = response.data.body.containerComponent;
+	        		components.put(containerComponent);
+	        	}
 				if(components){
 					appendMsgByComponents(chatBody,'recived',components);				
 				}

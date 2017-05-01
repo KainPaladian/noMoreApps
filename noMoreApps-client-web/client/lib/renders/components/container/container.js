@@ -23,7 +23,19 @@ processContainer = function(container,componentInfo){
 		var marginLeft = options.marginLeft;
 		var collapse = options.collapse;
 
+		var horizontalPosition = options.horizontalPosition;
+
 		var titleElement = null;
+
+		if(horizontalPosition){
+			if(horizontalPosition=="center"){
+				$(mainElement).addClass("center-block");		
+			}else if(horizontalPosition=="left"){
+				$(mainElement).addClass("pull-left");		
+			}else if(horizontalPosition=="right"){
+				$(mainElement).addClass("pull-right");		
+			}
+		}
 
 		if(title){
 			
