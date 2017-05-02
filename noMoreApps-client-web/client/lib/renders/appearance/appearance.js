@@ -10,6 +10,8 @@ processAppearance = function(container,apiResponse) {
 			styleSkin = {"background-color":"#F08080"};
 		}else if(skin==SKIN_BLUE_SKY){
 			styleSkin = {"background-color":"#b3e6ff"};
+		}else if(skin==SKIN_DARK){
+			styleSkin = {"background-color":"#000000"};
 		}		
 	}
 	if(styleSkin){

@@ -19,7 +19,7 @@ processCarousel = function(container,componentInfo){
 
   $(document).ready(function() {
     $(mainElement).slick({
-      dots: true,
+      dots: false,
       infinite: false,
       speed: 300,
       slidesToShow: 4,

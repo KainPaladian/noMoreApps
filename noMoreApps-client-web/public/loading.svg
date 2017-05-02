@@ -1,21 +1,21 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="47.492063215740586" height="50.07936481505624" preserveAspectRatio="xMidYMid"><rect id="backgroundrect" width="100%" height="100%" x="0" y="0" fill="none" stroke="none"/><g class="currentLayer"><title>Layer 1</title><rect x="-25.396825790405273" y="-24.603174209594727" width="100" height="100" fill="none" class="bk" id="svg_1"/><g id="svg_2" class="">
-  <circle r="5" cx="4.60317" cy="25.3968" id="svg_3" transform="translate(6.53675 -6.53675)">
+<svg width='100px' height='100px' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" class="uil-balls"><rect x="0" y="0" width="100" height="100" fill="none" class="bk"></rect><g transform="rotate(0 50 50)">
+  <circle r="5" cx="30" cy="50">
     <animateTransform attributeName="transform" type="translate" begin="0s" repeatCount="indefinite" dur="1s" values="0 0;19.999999999999996 -20" keyTimes="0;1"/>
-    <animate attributeName="fill" dur="1s" begin="0s" repeatCount="indefinite" keyTimes="0;1" values="#fefefe;#cec9c9"/>
+    <animate attributeName="fill" dur="1s" begin="0s" repeatCount="indefinite"  keyTimes="0;1" values="#fefefe;#cec9c9"/>
   </circle>
-</g><g transform="rotate(90 24.603174209594727,25.396825790405277) " id="svg_4" class="">
-  <circle r="5" cx="4.60317" cy="25.3968" id="svg_5" transform="translate(6.53675 -6.53675)">
+</g><g transform="rotate(90 50 50)">
+  <circle r="5" cx="30" cy="50">
     <animateTransform attributeName="transform" type="translate" begin="0s" repeatCount="indefinite" dur="1s" values="0 0;19.999999999999996 -20" keyTimes="0;1"/>
-    <animate attributeName="fill" dur="1s" begin="0s" repeatCount="indefinite" keyTimes="0;1" values="#cec9c9;#3c302e"/>
+    <animate attributeName="fill" dur="1s" begin="0s" repeatCount="indefinite"  keyTimes="0;1" values="#cec9c9;#3c302e"/>
   </circle>
-</g><g transform="rotate(180 24.603174209594727,25.396825790405273) " id="svg_6" class="">
-  <circle r="5" cx="4.60317" cy="25.3968" id="svg_7" transform="translate(6.53675 -6.53675)">
+</g><g transform="rotate(180 50 50)">
+  <circle r="5" cx="30" cy="50">
     <animateTransform attributeName="transform" type="translate" begin="0s" repeatCount="indefinite" dur="1s" values="0 0;19.999999999999996 -20" keyTimes="0;1"/>
-    <animate attributeName="fill" dur="1s" begin="0s" repeatCount="indefinite" keyTimes="0;1" values="#3c302e;#bb171a"/>
+    <animate attributeName="fill" dur="1s" begin="0s" repeatCount="indefinite"  keyTimes="0;1" values="#3c302e;#bb171a"/>
   </circle>
-</g><g transform="rotate(270 24.603174209594723,25.396825790405273) " id="svg_8" class="">
-  <circle r="5" cx="4.60317" cy="25.3968" id="svg_9" transform="translate(6.53675 -6.53675)">
+</g><g transform="rotate(270 50 50)">
+  <circle r="5" cx="30" cy="50">
     <animateTransform attributeName="transform" type="translate" begin="0s" repeatCount="indefinite" dur="1s" values="0 0;19.999999999999996 -20" keyTimes="0;1"/>
-    <animate attributeName="fill" dur="1s" begin="0s" repeatCount="indefinite" keyTimes="0;1" values="#bb171a;#fefefe"/>
+    <animate attributeName="fill" dur="1s" begin="0s" repeatCount="indefinite"  keyTimes="0;1" values="#bb171a;#fefefe"/>
   </circle>
-</g></g></svg>
+</g></svg>

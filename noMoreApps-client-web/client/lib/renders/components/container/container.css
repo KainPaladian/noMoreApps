@@ -17,3 +17,7 @@
 .component-container-clear {
 	clear: both;	
 }
+
+.component-container-title-separator {
+	border-bottom: 1px black solid;
+}

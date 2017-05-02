@@ -14,6 +14,8 @@ processContainer = function(container,componentInfo){
 		var title = options.title;
 		var titleHorizontalPosition = options.titleHorizontalPosition;
 		var titleFontSize = options.titleFontSize;
+		var titleSeparator = options.titleSeparator;
+		var titleMarginBottom = options.titleMarginBottom;
 		var layoutRender = options.layoutRender;
 		var feedConfig = options.paginationComponent;
 		var floatElements = options.floatElements;
@@ -58,6 +60,15 @@ processContainer = function(container,componentInfo){
 				if(titleHorizontalPosition=="center"){
 					$(headerElement).addClass("text-center");	
 				}				
+			}
+
+			if(titleSeparator){
+				$(headerElement).addClass("component-container-title-separator");
+			}
+
+
+			if(titleMarginBottom){
+				$(headerElement).css("margin-bottom",titleMarginBottom);
 			}
 		}
 
